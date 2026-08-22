@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const sharp = require('sharp');
 
 // Set environment variable before requiring cloudinary
 process.env.CLOUDINARY_URL = "cloudinary://988598497533237:kx47uL-wT2mFkAgzWz03V6xgMZk@eqijlhyf";
@@ -9,7 +10,6 @@ const cloudinary = require('cloudinary').v2;
 const uploadFolder = "lumina/naturaleza";
 const sourceFolder = "V:\\STOCK PHOTOS\\GALERIA 4\\LUMINA PHOTO STOCK";
 
-// To avoid overloading the API or memory, let's process sequentially with a small delay
 async function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -19,6 +19,24 @@ function getFileHash(filePath) {
   const hashSum = crypto.createHash('md5');
   hashSum.update(fileBuffer);
   return hashSum.digest('hex');
+}
+
+function uploadBufferToCloudinary(buffer, fileName) {
+  return new Promise((resolve, reject) => {
+    const stream = cloudinary.uploader.upload_stream(
+      { 
+        folder: uploadFolder, 
+        public_id: fileName.split('.')[0], // Remove extension for public_id
+        overwrite: true,
+        resource_type: 'image'
+      },
+      (error, result) => {
+        if (error) reject(error);
+        else resolve(result);
+      }
+    );
+    stream.end(buffer);
+  });
 }
 
 async function uploadImages() {
@@ -48,13 +66,8 @@ async function uploadImages() {
       uniqueFiles.push(file);
     }
   }
-
-  console.log(`Detected ${duplicates.length} duplicate files.`);
-  if (duplicates.length > 0) {
-    console.log(`Duplicates skipped (e.g. ${duplicates.slice(0, 3).join(', ')}...)`);
-  }
   
-  console.log(`Uploading ${uniqueFiles.length} unique images to Cloudinary...`);
+  console.log(`Uploading ${uniqueFiles.length} unique images to Cloudinary with compression...`);
 
   let successCount = 0;
   let errorCount = 0;
@@ -62,15 +75,16 @@ async function uploadImages() {
   for (let i = 0; i < uniqueFiles.length; i++) {
     const file = uniqueFiles[i];
     const fullPath = path.join(sourceFolder, file);
-    console.log(`[${i+1}/${uniqueFiles.length}] Uploading ${file}...`);
+    console.log(`[${i+1}/${uniqueFiles.length}] Compressing and uploading ${file}...`);
     
     try {
-      await cloudinary.uploader.upload(fullPath, {
-        folder: uploadFolder,
-        use_filename: true,
-        unique_filename: false,
-        overwrite: true
-      });
+      // Compress the image to a web-friendly size (max width 2500px, 80% quality)
+      const compressedBuffer = await sharp(fullPath)
+        .resize({ width: 2500, withoutEnlargement: true })
+        .jpeg({ quality: 80 })
+        .toBuffer();
+
+      await uploadBufferToCloudinary(compressedBuffer, file);
       successCount++;
     } catch (error) {
       console.error(`Error uploading ${file}:`, error.message);

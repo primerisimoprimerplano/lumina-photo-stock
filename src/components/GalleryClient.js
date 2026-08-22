@@ -33,7 +33,7 @@ export default function GalleryClient({ images }) {
     <>
       <div className="masonry" style={{ columnCount: 'auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.5rem', padding: '0 2rem 4rem' }}>
         {images.map((img, index) => {
-          const imageUrl = `/api/local-image?path=${encodeURIComponent(img.path)}`;
+          const imageUrl = img.path;
           return (
             <div 
               key={index} 
