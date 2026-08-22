@@ -2,15 +2,31 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { useCart } from '../context/CartContext';
 
 export default function GalleryClient({ images }) {
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedSize, setSelectedSize] = useState('full');
+  const { addToCart } = useCart();
   
   const prices = {
     small: 1,
     medium: 3,
     full: 6
+  };
+
+  const handleAddToCart = () => {
+    if (!selectedImage) return;
+    
+    addToCart({
+      path: selectedImage.path,
+      name: selectedImage.name,
+      url: selectedImage.url,
+      size: selectedSize,
+      price: prices[selectedSize]
+    });
+    
+    setSelectedImage(null); // Close the modal
   };
 
   return (
@@ -107,7 +123,7 @@ export default function GalleryClient({ images }) {
                 <p style={{ color: 'var(--accent)' }}>✓ Sin marca de agua.</p>
               </div>
 
-              <button className="btn-cart-large">
+              <button className="btn-cart-large" onClick={handleAddToCart}>
                 Añadir al Carrito - ${prices[selectedSize]}.00 USD
               </button>
             </div>

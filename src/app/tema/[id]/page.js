@@ -1,7 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 import Link from 'next/link';
-import GalleryClient from '@/components/GalleryClient';
+import GalleryClient from '../../../components/GalleryClient';
+
+export const dynamic = 'force-dynamic'; // Prevent Next.js from caching the file system read
 
 // Mapeo temporal de categorías a las carpetas en el disco V:
 const categoryToFolder = {
@@ -31,9 +33,13 @@ export default async function GalleryPage({ params }) {
 
   if (folderName) {
     const absolutePath = path.join('V:\\STOCK PHOTOS', folderName);
+    console.log("Intentando leer:", absolutePath);
     try {
-      if (fs.existsSync(absolutePath)) {
+      const exists = fs.existsSync(absolutePath);
+      console.log("¿Existe la ruta?", exists);
+      if (exists) {
         const files = fs.readdirSync(absolutePath);
+        console.log(`Encontrados ${files.length} archivos.`);
         // Filtrar solo JPGs
         images = files
           .filter(file => file.toLowerCase().endsWith('.jpg') || file.toLowerCase().endsWith('.jpeg'))
