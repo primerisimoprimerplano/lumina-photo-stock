@@ -1,15 +1,24 @@
-import fs from 'fs';
-import path from 'path';
 import Link from 'next/link';
-import GalleryClient from '../../../components/GalleryClient';
+import GalleryClient from '@/components/GalleryClient';
+import { v2 as cloudinary } from 'cloudinary';
 
-export const dynamic = 'force-dynamic'; // Prevent Next.js from caching the file system read
+export const dynamic = 'force-dynamic'; // We still want this to be dynamic to fetch latest images
 
-// Mapeo temporal de categorías a las carpetas en el disco V:
+cloudinary.config({
+  cloudinary_url: process.env.CLOUDINARY_URL
+});
+
+// Mapping for Cloudinary folders
 const categoryToFolder = {
-  'arquitectura': 'GALERIA 1 ARQUITECTONICOS',
-  'naturaleza': 'GALERIA 4\\LUMINA PHOTO STOCK', 
-  // Podemos mapear las demás luego...
+  'arquitectura': 'lumina/arquitectura',
+  'naturaleza': 'lumina/naturaleza', 
+  'abstracto': 'lumina/abstracto',
+  'gastronomia': 'lumina/gastronomia',
+  'retratos': 'lumina/retratos',
+  'viajes': 'lumina/viajes',
+  'tecnologia': 'lumina/tecnologia',
+  'deportes': 'lumina/deportes',
+  'fauna': 'lumina/fauna'
 };
 
 const categoryTitles = {
@@ -32,24 +41,25 @@ export default async function GalleryPage({ params }) {
   let images = [];
 
   if (folderName) {
-    const absolutePath = path.join('V:\\STOCK PHOTOS', folderName);
-    console.log("Intentando leer:", absolutePath);
     try {
-      const exists = fs.existsSync(absolutePath);
-      console.log("¿Existe la ruta?", exists);
-      if (exists) {
-        const files = fs.readdirSync(absolutePath);
-        console.log(`Encontrados ${files.length} archivos.`);
-        // Filtrar solo JPGs
-        images = files
-          .filter(file => file.toLowerCase().endsWith('.jpg') || file.toLowerCase().endsWith('.jpeg'))
-          .map(file => ({
-            name: file,
-            path: path.join(absolutePath, file)
-          }));
-      }
+      console.log("Consultando Cloudinary para la carpeta:", folderName);
+      
+      // Fetch resources from the specific folder in Cloudinary
+      const { resources } = await cloudinary.api.resources({
+        type: 'upload',
+        prefix: folderName + '/',
+        max_results: 500
+      });
+      
+      console.log(`Encontrados ${resources.length} archivos en la nube.`);
+      
+      images = resources.map(res => ({
+        name: res.public_id.split('/').pop() + '.' + res.format,
+        path: res.secure_url
+      }));
+
     } catch (e) {
-      console.error("Error reading directory:", e);
+      console.error("Error consultando Cloudinary:", e);
     }
   }
 
@@ -57,7 +67,7 @@ export default async function GalleryPage({ params }) {
     <main>
       <header className="header" style={{ padding: '2rem' }}>
         <h1>{title}</h1>
-        <p>EXPLORA LA COLECCIÓN</p>
+        <p>EXPLORA LA COLECCIÓN EN LA NUBE</p>
         <Link href="/" style={{ color: 'var(--accent)', marginTop: '1rem', display: 'inline-block', borderBottom: '1px solid' }}>
           &larr; Volver a Galerías
         </Link>
@@ -65,7 +75,7 @@ export default async function GalleryPage({ params }) {
 
       {images.length === 0 ? (
         <div style={{ textAlign: 'center', padding: '4rem', color: 'var(--text-secondary)' }}>
-          <p>No se encontraron fotografías en la ruta V:\STOCK PHOTOS\{folderName}</p>
+          <p>No se encontraron fotografías en la nube para {title}.</p>
         </div>
       ) : (
         <GalleryClient images={images} />
