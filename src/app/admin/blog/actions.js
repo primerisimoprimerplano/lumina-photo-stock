@@ -8,6 +8,8 @@ export async function createPost(formData) {
   const title = formData.get('title');
   const content = formData.get('content');
   const published = formData.get('published') === 'true';
+  const subtitle = formData.get('subtitle');
+  const image_url = formData.get('image_url');
   
   // Generate slug from title
   const slug = title
@@ -18,7 +20,7 @@ export async function createPost(formData) {
 
   const { error } = await supabase
     .from('posts')
-    .insert([{ title, slug, content, published }]);
+    .insert([{ title, slug, content, published, subtitle, image_url }]);
 
   if (error) {
     console.error('Error creating post:', error);

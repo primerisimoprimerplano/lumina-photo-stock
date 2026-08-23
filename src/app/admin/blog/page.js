@@ -12,9 +12,9 @@ export default async function AdminBlog() {
   return (
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-        <h1 style={{ fontSize: '2.5rem', margin: 0, color: '#fff' }}>Artículos de Blog</h1>
+        <h1 style={{ fontSize: '2.5rem', margin: 0, color: '#fff' }}>Noticias y Artículos</h1>
         <Link href="/admin/blog/nuevo" style={{ padding: '0.8rem 1.5rem', backgroundColor: '#d4af37', color: 'black', borderRadius: '6px', fontWeight: 'bold', textDecoration: 'none' }}>
-          + Escribir Artículo
+          + Redactar Noticia
         </Link>
       </div>
 

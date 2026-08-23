@@ -1,5 +1,6 @@
 import { createPost } from '../actions';
 import Link from 'next/link';
+import ImageUploadField from '../ImageUploadField';
 
 export default function NewPost() {
   return (
@@ -12,6 +13,9 @@ export default function NewPost() {
       </div>
 
       <form action={createPost} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: '800px' }}>
+        
+        <ImageUploadField />
+
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
           <label style={{ color: '#aaa', fontWeight: 'bold' }}>Título</label>
           <input 
@@ -20,6 +24,16 @@ export default function NewPost() {
             required 
             placeholder="Ej. El arte de la fotografía de fauna"
             style={{ padding: '1rem', backgroundColor: '#1a1a1a', border: '1px solid #333', color: 'white', borderRadius: '6px', fontSize: '1.1rem' }}
+          />
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          <label style={{ color: '#aaa', fontWeight: 'bold' }}>Subtítulo (Entradilla)</label>
+          <textarea 
+            name="subtitle" 
+            rows={2}
+            placeholder="Breve resumen o introducción de la noticia..."
+            style={{ padding: '1rem', backgroundColor: '#1a1a1a', border: '1px solid #333', color: 'white', borderRadius: '6px', fontSize: '1.1rem', resize: 'vertical' }}
           />
         </div>
 

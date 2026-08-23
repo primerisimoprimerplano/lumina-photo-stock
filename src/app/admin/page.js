@@ -21,7 +21,7 @@ export default async function AdminDashboard() {
 
         {/* Card Blog */}
         <div style={{ backgroundColor: '#1a1a1a', padding: '2rem', borderRadius: '12px', border: '1px solid #333' }}>
-          <h3 style={{ color: '#888', margin: '0 0 1rem 0', fontSize: '1rem', textTransform: 'uppercase' }}>Artículos de Blog</h3>
+          <h3 style={{ color: '#888', margin: '0 0 1rem 0', fontSize: '1rem', textTransform: 'uppercase' }}>Noticias y Artículos</h3>
           <p style={{ fontSize: '3rem', margin: 0, fontWeight: 'bold', color: '#d4af37' }}>{blogCount || 0}</p>
           <p style={{ color: '#555', marginTop: '1rem', fontSize: '0.9rem' }}>Publicados</p>
         </div>

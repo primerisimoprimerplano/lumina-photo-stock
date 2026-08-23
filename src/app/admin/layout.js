@@ -19,7 +19,7 @@ export default function AdminLayout({ children }) {
             🖼️ Galerías
           </Link>
           <Link href="/admin/blog" style={{ padding: '0.8rem 1rem', borderRadius: '6px', color: 'white', textDecoration: 'none', transition: 'background 0.2s' }} className="admin-nav-link">
-            📝 Blog
+            📰 Noticias
           </Link>
         </nav>
         

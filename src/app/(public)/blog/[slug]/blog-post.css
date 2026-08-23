@@ -1,7 +1,18 @@
 .blog-content {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   line-height: 1.8;
   color: #ddd;
+  column-count: 2;
+  column-gap: 3rem;
+  column-rule: 1px solid #333;
+  text-align: justify;
+}
+
+@media (max-width: 768px) {
+  .blog-content {
+    column-count: 1;
+    text-align: left;
+  }
 }
 
 .blog-content p {
