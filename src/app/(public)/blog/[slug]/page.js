@@ -19,6 +19,12 @@ export async function generateMetadata({ params }) {
 
   const description = post.content.replace(/[#*]/g, '').substring(0, 160) + '...';
 
+  // Optimizar imagen para WhatsApp (forzar 1200x630 y reducir peso)
+  let ogImageUrl = post.image_url;
+  if (ogImageUrl && ogImageUrl.includes('res.cloudinary.com')) {
+    ogImageUrl = ogImageUrl.replace('/image/upload/', '/image/upload/c_fill,w_1200,h_630,q_auto:low,f_jpg/');
+  }
+
   return {
     title: `${post.title} | Lumina Blog`,
     description: description,
@@ -29,7 +35,7 @@ export async function generateMetadata({ params }) {
       siteName: 'Lumina Photo Stock',
       images: [
         {
-          url: post.image_url,
+          url: ogImageUrl,
           width: 1200,
           height: 630,
           alt: post.title,
@@ -42,7 +48,7 @@ export async function generateMetadata({ params }) {
       card: 'summary_large_image',
       title: post.title,
       description: description,
-      images: [post.image_url],
+      images: [ogImageUrl],
     },
   };
 }
