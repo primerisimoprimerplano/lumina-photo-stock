@@ -1,19 +1,16 @@
 import Link from 'next/link';
 import CartIcon from "../../components/CartIcon";
 import CartSidebar from "../../components/CartSidebar";
+import SecretAdminTrigger from "../../components/SecretAdminTrigger";
+import { supabase } from '../../lib/supabase';
 
-export default function PublicLayout({ children }) {
-  const galleries = [
-    { id: 'arquitectura', title: 'Arquitectura' },
-    { id: 'naturaleza', title: 'Naturaleza' },
-    { id: 'abstracto', title: 'Abstracto' },
-    { id: 'gastronomia', title: 'Gastronomía' },
-    { id: 'retratos', title: 'Retratos' },
-    { id: 'viajes', title: 'Viajes' },
-    { id: 'tecnologia', title: 'Tecnología' },
-    { id: 'deportes', title: 'Deportes' },
-    { id: 'fauna', title: 'Fauna' }
-  ];
+export const dynamic = 'force-dynamic';
+
+export default async function PublicLayout({ children }) {
+  const { data: galleries } = await supabase
+    .from('categories')
+    .select('*')
+    .order('title');
 
   return (
     <>
@@ -27,7 +24,7 @@ export default function PublicLayout({ children }) {
           </Link>
         </div>
         <div className="nav-links">
-          {galleries.map(g => (
+          {galleries && galleries.map(g => (
             <Link key={g.id} href={`/tema/${g.id}`} className="nav-link">{g.title}</Link>
           ))}
           <Link href="/blog" className="nav-link" style={{ color: 'var(--accent)' }}>Blog</Link>
@@ -64,6 +61,7 @@ export default function PublicLayout({ children }) {
           <p>&copy; {new Date().getFullYear()} Lumina Photo Stock. Todos los derechos reservados.</p>
         </div>
       </footer>
+      <SecretAdminTrigger />
     </>
   );
 }

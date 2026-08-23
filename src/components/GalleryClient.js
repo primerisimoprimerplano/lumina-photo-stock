@@ -44,16 +44,21 @@ export default function GalleryClient({ images }) {
                 setSelectedSize('full');
               }}
             >
-              <div style={{ position: 'relative', width: '100%', aspectRatio: '3/2' }}>
+              <div 
+                style={{ position: 'relative', width: '100%', aspectRatio: '3/2', cursor: 'pointer' }}
+                onContextMenu={(e) => e.preventDefault()} // Bloquear clic derecho
+                onDragStart={(e) => e.preventDefault()} // Evitar arrastrar imagen
+              >
                 <Image 
                   src={imageUrl} 
                   alt={img.name}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  style={{ objectFit: 'cover' }}
+                  style={{ objectFit: 'cover', pointerEvents: 'none' }} // Evita interacción directa con img tag
                   unoptimized={true}
+                  priority={index < 4}
                 />
-                <div className="masonry-overlay">
+                <div className="masonry-overlay" style={{ pointerEvents: 'none' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', width: '100%' }}>
                     <div>
                       <p style={{ color: 'white', fontWeight: 'bold' }}>{img.name}</p>
@@ -73,12 +78,16 @@ export default function GalleryClient({ images }) {
           <div className="modal-content" onClick={e => e.stopPropagation()}>
             <button className="modal-close" onClick={() => setSelectedImage(null)}>✕</button>
             
-            <div className="modal-image-container">
+            <div 
+              className="modal-image-container"
+              onContextMenu={(e) => e.preventDefault()}
+              onDragStart={(e) => e.preventDefault()}
+            >
               <Image 
-                src={selectedImage.url} 
+                src={selectedImage.path} // Muestra la versión con marca de agua (path) en vez de original (url)
                 alt={selectedImage.name}
                 fill
-                style={{ objectFit: 'contain' }}
+                style={{ objectFit: 'contain', pointerEvents: 'none' }}
                 unoptimized={true}
               />
             </div>
@@ -123,9 +132,29 @@ export default function GalleryClient({ images }) {
                 <p style={{ color: 'var(--accent)' }}>✓ Sin marca de agua.</p>
               </div>
 
-              <button className="btn-cart-large" onClick={handleAddToCart}>
+              <button className="btn-cart-large" onClick={handleAddToCart} style={{ marginBottom: '1rem' }}>
                 Añadir al Carrito - ${prices[selectedSize]}.00 USD
               </button>
+              
+              <a 
+                href={`mailto:compras@luminaphotostock.com?subject=Solicitud Tamaño Especial - ${selectedImage.name}&body=Hola, estoy interesado en adquirir la fotografía "${selectedImage.name}" en un tamaño superior a Full Calidad. Por favor enviarme cotización.`}
+                style={{
+                  display: 'block',
+                  textAlign: 'center',
+                  padding: '0.8rem',
+                  backgroundColor: 'transparent',
+                  color: 'var(--text-secondary)',
+                  border: '1px solid var(--border)',
+                  borderRadius: '6px',
+                  textDecoration: 'none',
+                  fontSize: '0.9rem',
+                  transition: 'color 0.2s, border-color 0.2s'
+                }}
+                onMouseOver={(e) => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = '#888'; }}
+                onMouseOut={(e) => { e.currentTarget.style.color = 'var(--text-secondary)'; e.currentTarget.style.borderColor = 'var(--border)'; }}
+              >
+                Solicitar tamaño Extra Grande (Email)
+              </a>
             </div>
           </div>
         </div>
