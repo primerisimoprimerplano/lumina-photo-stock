@@ -12,11 +12,14 @@ export async function createPost(formData) {
   const image_url = formData.get('image_url');
   
   // Generate slug from title
-  const slug = title
+  let slug = title
     .toLowerCase()
     .replace(/[^\w\s-]/g, '')
     .replace(/[\s_-]+/g, '-')
     .replace(/^-+|-+$/g, '');
+    
+  // Añadir un sufijo aleatorio para evitar problemas si se repite el título
+  slug = `${slug}-${Math.floor(1000 + Math.random() * 9000)}`;
 
   const { error } = await supabase
     .from('posts')
@@ -24,7 +27,7 @@ export async function createPost(formData) {
 
   if (error) {
     console.error('Error creating post:', error);
-    return { success: false, error: error.message };
+    throw new Error(error.message);
   }
 
   revalidatePath('/admin/blog');
