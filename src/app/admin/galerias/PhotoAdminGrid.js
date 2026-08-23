@@ -11,11 +11,17 @@ export default function PhotoAdminGrid({ initialImages, category }) {
   const [images, setImages] = useState(initialImages);
   const [deleting, setDeleting] = useState(null);
   const [isSavingOrder, setIsSavingOrder] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
+    setMounted(true);
     setImages(initialImages);
   }, [initialImages]);
+
+  if (!mounted) {
+    return <div style={{ color: '#fff' }}>Cargando galería...</div>;
+  }
 
   const handleDelete = async (publicId) => {
     if (!window.confirm('¿Estás seguro de que quieres eliminar esta foto definitivamente?')) {
