@@ -7,10 +7,12 @@ import './blog-post.css';
 export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }) {
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug;
   const { data: post } = await supabase
     .from('posts')
     .select('title, content, image_url')
-    .eq('slug', params.slug)
+    .eq('slug', slug)
     .single();
 
   if (!post) return { title: 'No encontrado' };
@@ -23,7 +25,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: post.title,
       description: description,
-      url: `https://lumina-photo-stock.vercel.app/blog/${params.slug}`,
+      url: `https://lumina-photo-stock.vercel.app/blog/${slug}`,
       siteName: 'Lumina Photo Stock',
       images: [
         {
@@ -46,10 +48,12 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function BlogPost({ params }) {
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug;
   const { data: post } = await supabase
     .from('posts')
     .select('*')
-    .eq('slug', params.slug)
+    .eq('slug', slug)
     .single();
 
   if (!post) {
