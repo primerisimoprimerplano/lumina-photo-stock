@@ -5,24 +5,11 @@ export default function TrustBadges() {
     <div style={{ backgroundColor: '#111', padding: '3rem 1rem', borderTop: '1px solid #222', borderBottom: '1px solid #222', marginTop: '4rem' }}>
       <div style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
         
-        {/* Top text with checkmarks */}
-        <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '2rem', marginBottom: '1.5rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#ccc', fontSize: '1rem' }}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <span>Cancela en cualquier momento</span>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#ccc', fontSize: '1rem' }}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <span>Garantía de reembolso</span>
-          </div>
-        </div>
-
         {/* Separator with text */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem', marginBottom: '2.5rem' }}>
           <div style={{ height: '1px', backgroundColor: '#333', flexGrow: 1, maxWidth: '200px' }}></div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#d4af37', fontSize: '1.1rem', fontWeight: 'bold' }}>
-            <span>Seguro. Privado. Bajo tu control</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#888' }}><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            <span>Compra segura bajo el respaldo de</span>
           </div>
           <div style={{ height: '1px', backgroundColor: '#333', flexGrow: 1, maxWidth: '200px' }}></div>
         </div>
