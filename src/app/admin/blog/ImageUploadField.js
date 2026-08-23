@@ -4,8 +4,8 @@ import { useState } from 'react';
 import { CldUploadWidget } from 'next-cloudinary';
 import Image from 'next/image';
 
-export default function ImageUploadField({ initialImage = '' }) {
-  const [imageUrl, setImageUrl] = useState(initialImage);
+export default function ImageUploadField({ defaultImageUrl = '' }) {
+  const [imageUrl, setImageUrl] = useState(defaultImageUrl);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
@@ -31,7 +31,10 @@ export default function ImageUploadField({ initialImage = '' }) {
           uploadPreset="lumina_preset"
           options={{
             folder: `lumina/blog`,
-            maxFiles: 1
+            maxFiles: 1,
+            clientAllowedFormats: ["jpg", "jpeg", "png", "webp", "heic", "heif"],
+            maxImageWidth: 2000,
+            maxImageHeight: 2000
           }}
           onSuccess={(result) => {
             setImageUrl(result.info.secure_url);

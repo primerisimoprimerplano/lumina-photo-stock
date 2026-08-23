@@ -65,7 +65,10 @@ export default function PhotoAdminGrid({ initialImages, category }) {
           options={{
             folder: `lumina/${category}`,
             tags: [category],
-            maxFiles: 10
+            maxFiles: 10,
+            clientAllowedFormats: ["jpg", "jpeg", "png", "webp", "heic", "heif"],
+            maxImageWidth: 2000,
+            maxImageHeight: 2000
           }}
           onSuccess={(result) => {
             router.refresh(); // Refrescar la página para ver las nuevas fotos
