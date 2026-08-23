@@ -4,8 +4,8 @@ import PhotoAdminGrid from './PhotoAdminGrid';
 export const revalidate = 0; // Disable caching
 
 export default async function AdminGalerias({ searchParams }) {
-  const selectedCategory = searchParams.category || 'naturaleza';
-  
+  const resolvedParams = await searchParams;
+  const selectedCategory = resolvedParams?.category || 'naturaleza';
   const galleries = [
     { id: 'arquitectura', title: 'Arquitectura' },
     { id: 'naturaleza', title: 'Naturaleza' },
