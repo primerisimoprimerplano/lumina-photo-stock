@@ -41,23 +41,15 @@ export default function SecretAdminTrigger() {
 
   return (
     <>
-      <span 
-        onClick={handleSecretClick}
-        style={{
-          cursor: 'default',
-          color: 'transparent',
-          position: 'absolute',
-          bottom: '10px',
-          right: '10px',
-          fontSize: '10px',
-          userSelect: 'none',
-          padding: '20px',
-          zIndex: 50
-        }}
-        title=""
-      >
-        Lumina v1.0
-      </span>
+      <p>
+        <span 
+          onClick={handleSecretClick}
+          style={{ cursor: 'default' }}
+          title=""
+        >
+          &copy;
+        </span> {new Date().getFullYear()} Lumina Photo Stock. Todos los derechos reservados.
+      </p>
 
       {showPrompt && (
         <div style={{
