@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import Link from 'next/link';
 import './blog-post.css';
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }) {
   const { data: post } = await supabase
@@ -32,9 +32,19 @@ export default async function BlogPost({ params }) {
     notFound();
   }
 
+  // Obtener otras noticias (que no sean esta)
+  const { data: otherPosts } = await supabase
+    .from('posts')
+    .select('*')
+    .eq('published', true)
+    .neq('id', post.id)
+    .order('created_at', { ascending: false })
+    .limit(6);
+
   return (
     <div style={{ padding: '0', backgroundColor: '#0a0a0a', minHeight: '100vh' }}>
       
+      {/* Portada de la Noticia Principal */}
       {post.image_url ? (
         <div style={{ position: 'relative', width: '100%', height: '60vh', minHeight: '400px', backgroundColor: '#111' }}>
           <img src={post.image_url} alt={post.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -44,12 +54,10 @@ export default async function BlogPost({ params }) {
         <div style={{ height: '100px' }}></div>
       )}
 
+      {/* Contenido de la Noticia Principal */}
       <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '0 2rem', marginTop: post.image_url ? '-100px' : '0', position: 'relative', zIndex: 10 }}>
-        <Link href="/blog" style={{ color: '#d4af37', textDecoration: 'none', display: 'inline-block', marginBottom: '2rem', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '2px', backgroundColor: '#0a0a0a', padding: '0.5rem 1rem', borderRadius: '4px' }}>
-          ← Volver a Noticias
-        </Link>
         
-        <article>
+        <article style={{ marginBottom: '6rem' }}>
           <header style={{ marginBottom: '4rem', textAlign: 'left' }}>
             <h1 style={{ fontSize: '4rem', color: '#fff', marginBottom: '1.5rem', lineHeight: '1.1', fontFamily: 'serif' }}>{post.title}</h1>
             
@@ -90,6 +98,45 @@ export default async function BlogPost({ params }) {
             <ReactMarkdown>{post.content}</ReactMarkdown>
           </div>
         </article>
+
+        {/* Mosaico de Noticias Anteriores */}
+        {otherPosts && otherPosts.length > 0 && (
+          <div style={{ marginTop: '4rem', borderTop: '2px solid #222', paddingTop: '4rem' }}>
+            <h3 style={{ fontSize: '2rem', color: '#fff', fontFamily: 'serif', marginBottom: '2rem', textAlign: 'center' }}>Noticias Anteriores</h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '2rem' }}>
+              {otherPosts.map(otherPost => (
+                <article key={otherPost.id} style={{ gridColumn: 'span 4', display: 'flex', flexDirection: 'column', gap: '1rem', backgroundColor: '#111', padding: '1rem', borderRadius: '8px', border: '1px solid #222' }}>
+                  {otherPost.image_url && (
+                    <div style={{ position: 'relative', width: '100%', height: '200px', backgroundColor: '#000', borderRadius: '4px', overflow: 'hidden' }}>
+                      <Link href={`/blog/${otherPost.slug}`}>
+                        <img src={otherPost.image_url} alt={otherPost.title} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.3s ease' }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'} />
+                      </Link>
+                    </div>
+                  )}
+                  <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+                    <p style={{ color: '#888', fontSize: '0.8rem', marginBottom: '0.5rem', textTransform: 'uppercase' }}>
+                      {new Date(otherPost.created_at).toLocaleDateString('es-ES', { year: 'numeric', month: 'short', day: 'numeric' })}
+                    </p>
+                    <Link href={`/blog/${otherPost.slug}`} style={{ textDecoration: 'none', flexGrow: 1 }}>
+                      <h2 style={{ fontSize: '1.4rem', color: '#fff', fontFamily: 'serif', marginBottom: '0.5rem', lineHeight: '1.2' }}>
+                        {otherPost.title}
+                      </h2>
+                    </Link>
+                    {otherPost.subtitle ? (
+                      <p style={{ color: '#aaa', fontSize: '0.95rem', marginBottom: '1.5rem', lineHeight: '1.4' }}>{otherPost.subtitle.substring(0, 100)}...</p>
+                    ) : (
+                      <p style={{ color: '#aaa', fontSize: '0.95rem', marginBottom: '1.5rem', lineHeight: '1.4' }}>{otherPost.content.replace(/[#*]/g, '').substring(0, 100)}...</p>
+                    )}
+                    <Link href={`/blog/${otherPost.slug}`} style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '1px', marginTop: 'auto' }}>
+                      Leer Más →
+                    </Link>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        )}
+
       </div>
     </div>
   );
