@@ -8,9 +8,12 @@ export default function CartSidebar() {
   const { isCartOpen, closeCart, cartItems, removeFromCart, cartTotal } = useCart();
   const [isProcessing, setIsProcessing] = useState(false);
 
+    const [legalAccepted, setLegalAccepted] = useState(false);
+
   if (!isCartOpen) return null;
 
   const handleCheckout = async () => {
+    if (!legalAccepted) return;
     setIsProcessing(true);
     try {
       const response = await fetch('/api/checkout', {
@@ -144,20 +147,33 @@ export default function CartSidebar() {
               <span style={{ color: 'var(--accent)' }}>${cartTotal}.00 USD</span>
             </div>
             
+            <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start', marginBottom: '1rem' }}>
+              <input 
+                type="checkbox" 
+                id="legal-terms" 
+                checked={legalAccepted}
+                onChange={(e) => setLegalAccepted(e.target.checked)}
+                style={{ marginTop: '0.2rem', cursor: 'pointer', width: '1.2rem', height: '1.2rem' }}
+              />
+              <label htmlFor="legal-terms" style={{ fontSize: '0.8rem', color: '#ccc', lineHeight: '1.4', cursor: 'pointer' }}>
+                He leído y acepto las <a href="/licencias" target="_blank" style={{ color: 'var(--accent)', textDecoration: 'underline' }} onClick={(e) => e.stopPropagation()}>Licencias y Uso</a>, los <a href="/terminos" target="_blank" style={{ color: 'var(--accent)', textDecoration: 'underline' }} onClick={(e) => e.stopPropagation()}>Términos y Condiciones</a> y las <a href="/privacidad" target="_blank" style={{ color: 'var(--accent)', textDecoration: 'underline' }} onClick={(e) => e.stopPropagation()}>Políticas de Privacidad</a>.
+              </label>
+            </div>
+            
             <button 
               onClick={handleCheckout}
-              disabled={isProcessing}
+              disabled={isProcessing || !legalAccepted}
               style={{
                 width: '100%',
                 padding: '1rem',
-                background: 'var(--accent)',
-                color: '#000',
+                background: (isProcessing || !legalAccepted) ? '#333' : 'var(--accent)',
+                color: (isProcessing || !legalAccepted) ? '#888' : '#000',
                 border: 'none',
                 borderRadius: '4px',
                 fontSize: '1.1rem',
                 fontWeight: 'bold',
-                cursor: isProcessing ? 'not-allowed' : 'pointer',
-                opacity: isProcessing ? 0.7 : 1,
+                cursor: (isProcessing || !legalAccepted) ? 'not-allowed' : 'pointer',
+                opacity: 1,
                 transition: 'all 0.2s'
               }}
             >
