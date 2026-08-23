@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
+  metadataBase: new URL('https://lumina-photo-stock.vercel.app'),
   title: "Lumina Photo Stock | Premium Photography",
   description: "Exclusiva colección de fotografías premium de stock para creadores y marcas.",
 };
