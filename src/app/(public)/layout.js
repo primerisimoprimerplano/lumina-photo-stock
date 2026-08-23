@@ -51,9 +51,9 @@ export default async function PublicLayout({ children }) {
           </div>
           <div className="footer-section">
             <h4>LEGALES</h4>
-            <Link href="#">Licencias y Uso</Link>
-            <Link href="#">Términos y Condiciones</Link>
-            <Link href="#">Privacidad</Link>
+            <Link href="/licencias">Licencias y Uso</Link>
+            <Link href="/terminos">Términos y Condiciones</Link>
+            <Link href="/privacidad">Privacidad</Link>
           </div>
           <div className="footer-section">
             <h4>SOPORTE</h4>
