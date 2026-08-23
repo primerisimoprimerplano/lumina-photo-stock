@@ -57,11 +57,11 @@ export default async function PublicLayout({ children }) {
             <p>República Dominicana</p>
           </div>
         </div>
-        <div className="footer-bottom">
+        <div className="footer-bottom" style={{ position: 'relative' }}>
           <p>&copy; {new Date().getFullYear()} Lumina Photo Stock. Todos los derechos reservados.</p>
+          <SecretAdminTrigger />
         </div>
       </footer>
-      <SecretAdminTrigger />
     </>
   );
 }

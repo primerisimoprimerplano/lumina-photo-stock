@@ -44,14 +44,14 @@ export default function SecretAdminTrigger() {
       <span 
         onClick={handleSecretClick}
         style={{
-          cursor: 'default', // Looks like normal text
+          cursor: 'default',
           color: 'transparent',
           position: 'absolute',
-          bottom: '20px',
-          right: '20px',
+          bottom: '10px',
+          right: '10px',
           fontSize: '10px',
           userSelect: 'none',
-          padding: '10px',
+          padding: '20px',
           zIndex: 50
         }}
         title=""
