@@ -8,7 +8,7 @@ export default function TrustBadges() {
         {/* Separator with text */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem', marginBottom: '2.5rem' }}>
           <div style={{ height: '1px', backgroundColor: '#333', flexGrow: 1, maxWidth: '200px' }}></div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#d4af37', fontSize: '1.1rem', fontWeight: 'bold' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#ccc', fontSize: '1.1rem', fontWeight: 'bold' }}>
             <span>Compra segura bajo el respaldo de</span>
           </div>
           <div style={{ height: '1px', backgroundColor: '#333', flexGrow: 1, maxWidth: '200px' }}></div>
