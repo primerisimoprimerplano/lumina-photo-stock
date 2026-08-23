@@ -38,7 +38,8 @@ export default function TrustBadges() {
               <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
             </svg>
             <div style={{ textAlign: 'left', lineHeight: '1.1' }}>
-              <div style={{ fontWeight: 'bold', fontSize: '1.2rem', color: '#ccc' }}>ISO <span style={{ fontSize: '0.9rem', fontWeight: 'normal' }}>27001</span></div>
+              <div style={{ fontWeight: 'bold', fontSize: '0.8rem', color: '#888', textTransform: 'uppercase' }}>Infraestructura</div>
+              <div style={{ fontWeight: 'bold', fontSize: '1.1rem', color: '#ccc' }}>ISO <span style={{ fontSize: '0.9rem', fontWeight: 'normal' }}>27001</span></div>
             </div>
           </div>
 
