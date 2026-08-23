@@ -109,7 +109,7 @@ export default async function BlogPost({ params }) {
                   {otherPost.image_url && (
                     <div style={{ position: 'relative', width: '100%', height: '200px', backgroundColor: '#000', borderRadius: '4px', overflow: 'hidden' }}>
                       <Link href={`/blog/${otherPost.slug}`}>
-                        <img src={otherPost.image_url} alt={otherPost.title} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.3s ease' }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'} />
+                        <img src={otherPost.image_url} alt={otherPost.title} className="blog-grid-img" />
                       </Link>
                     </div>
                   )}

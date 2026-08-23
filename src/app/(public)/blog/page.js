@@ -91,7 +91,7 @@ export default async function BlogIndex() {
                   {post.image_url && (
                     <div style={{ position: 'relative', width: '100%', height: '200px', backgroundColor: '#000', borderRadius: '4px', overflow: 'hidden' }}>
                       <Link href={`/blog/${post.slug}`}>
-                        <img src={post.image_url} alt={post.title} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.3s ease' }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'} />
+                        <img src={post.image_url} alt={post.title} className="blog-grid-img" />
                       </Link>
                     </div>
                   )}
