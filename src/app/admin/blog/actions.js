@@ -32,6 +32,34 @@ export async function createPost(formData) {
   redirect('/admin/blog');
 }
 
+export async function editPost(formData) {
+  const id = formData.get('id');
+  const title = formData.get('title');
+  const content = formData.get('content');
+  const published = formData.get('published') === 'true';
+  const subtitle = formData.get('subtitle');
+  const image_url = formData.get('image_url');
+  
+  const updates = { title, content, published, subtitle };
+  if (image_url) {
+    updates.image_url = image_url;
+  }
+
+  const { error } = await supabase
+    .from('posts')
+    .update(updates)
+    .eq('id', id);
+
+  if (error) {
+    console.error('Error updating post:', error);
+    return { success: false, error: error.message };
+  }
+
+  revalidatePath('/admin/blog');
+  revalidatePath('/blog');
+  redirect('/admin/blog');
+}
+
 export async function deletePost(id) {
   const { error } = await supabase
     .from('posts')
@@ -45,4 +73,5 @@ export async function deletePost(id) {
 
   revalidatePath('/admin/blog');
   revalidatePath('/blog');
+  redirect('/admin/blog');
 }
