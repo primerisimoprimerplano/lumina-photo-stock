@@ -64,12 +64,20 @@ export default async function GalleryPage({ params }) {
           { overlay: { font_family: "Arial", font_size: 80, font_weight: "bold", text: "LUMINA PHOTO STOCK" }, color: "white", opacity: 30, angle: -45 }
         ]
       });
+      
+      const thumbnailUrl = cloudinary.url(publicId, {
+        secure: true,
+        transformation: [
+          { width: 400, crop: "scale" } // Miniatura pequeña sin marca de agua
+        ]
+      });
 
       return {
         id: publicId,
         public_id: publicId,
         name: publicId.split('/').pop() + '.' + res.format,
-        path: watermarkedUrl, // Show watermarked version
+        path: watermarkedUrl, // Show watermarked version in modal
+        thumbnail_url: thumbnailUrl, // Show without watermark in grid
         original_url: res.secure_url,
         sort_order: orderMap[publicId] !== undefined ? orderMap[publicId] : 9999 // Default to end if not sorted
       };
