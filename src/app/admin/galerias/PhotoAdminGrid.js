@@ -65,7 +65,8 @@ export default function PhotoAdminGrid({ initialImages, category }) {
           options={{
             folder: `lumina/${category}`,
             tags: [category],
-            maxFiles: 10,
+            multiple: true,
+            maxFiles: 1000,
             clientAllowedFormats: ["jpg", "jpeg", "png", "webp", "heic", "heif"],
             maxImageWidth: 2000,
             maxImageHeight: 2000

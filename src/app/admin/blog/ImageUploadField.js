@@ -31,7 +31,8 @@ export default function ImageUploadField({ defaultImageUrl = '' }) {
           uploadPreset="lumina_preset"
           options={{
             folder: `lumina/blog`,
-            maxFiles: 1,
+            multiple: false,
+            maxFiles: 1000,
             clientAllowedFormats: ["jpg", "jpeg", "png", "webp", "heic", "heif"],
             maxImageWidth: 2000,
             maxImageHeight: 2000
