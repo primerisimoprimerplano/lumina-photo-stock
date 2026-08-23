@@ -4,6 +4,8 @@ import CartSidebar from "../../components/CartSidebar";
 import SecretAdminTrigger from "../../components/SecretAdminTrigger";
 import { supabase } from '../../lib/supabase';
 
+import TrustBadges from "../../components/TrustBadges";
+
 export const dynamic = 'force-dynamic';
 
 export default async function PublicLayout({ children }) {
@@ -38,6 +40,8 @@ export default async function PublicLayout({ children }) {
       <CartSidebar />
       
       {children}
+
+      <TrustBadges />
 
       <footer className="footer">
         <div className="footer-content">
