@@ -5,6 +5,49 @@ import './[slug]/blog-post.css';
 
 export const dynamic = 'force-dynamic';
 
+export async function generateMetadata() {
+  const { data: posts } = await supabase
+    .from('posts')
+    .select('title, content, image_url')
+    .eq('published', true)
+    .order('created_at', { ascending: false })
+    .limit(1);
+
+  if (!posts || posts.length === 0) {
+    return { title: 'Blog | Lumina Photo Stock' };
+  }
+
+  const post = posts[0];
+  const description = post.content.replace(/[#*]/g, '').substring(0, 160) + '...';
+
+  return {
+    title: `Blog | Lumina Photo Stock`,
+    description: description,
+    openGraph: {
+      title: 'Lumina Blog',
+      description: description,
+      url: `https://lumina-photo-stock.vercel.app/blog`,
+      siteName: 'Lumina Photo Stock',
+      images: [
+        {
+          url: post.image_url,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+      locale: 'es_ES',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Lumina Blog',
+      description: description,
+      images: [post.image_url],
+    },
+  };
+}
+
 export default async function BlogIndex() {
   const { data: posts } = await supabase
     .from('posts')

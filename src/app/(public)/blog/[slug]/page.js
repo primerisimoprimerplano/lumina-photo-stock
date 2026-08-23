@@ -9,15 +9,39 @@ export const dynamic = 'force-dynamic';
 export async function generateMetadata({ params }) {
   const { data: post } = await supabase
     .from('posts')
-    .select('title, content')
+    .select('title, content, image_url')
     .eq('slug', params.slug)
     .single();
 
   if (!post) return { title: 'No encontrado' };
 
+  const description = post.content.replace(/[#*]/g, '').substring(0, 160) + '...';
+
   return {
     title: `${post.title} | Lumina Blog`,
-    description: post.content.replace(/[#*]/g, '').substring(0, 160),
+    description: description,
+    openGraph: {
+      title: post.title,
+      description: description,
+      url: `https://lumina-photo-stock.vercel.app/blog/${params.slug}`,
+      siteName: 'Lumina Photo Stock',
+      images: [
+        {
+          url: post.image_url,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+      locale: 'es_ES',
+      type: 'article',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: description,
+      images: [post.image_url],
+    },
   };
 }
 
