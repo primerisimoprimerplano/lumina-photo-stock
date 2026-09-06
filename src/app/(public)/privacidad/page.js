@@ -1,82 +1,144 @@
-import Link from 'next/link';
-
 export const metadata = {
   title: 'Políticas de Privacidad | Lumina Photo Stock',
-  description: 'Políticas de privacidad y manejo de datos de Lumina Photo Stock.',
 };
 
-export default function PrivacidadPage() {
+export default function LegalPage() {
   return (
-    <div style={{ padding: '6rem 2rem', backgroundColor: '#0a0a0a', minHeight: '100vh', color: '#e0e0e0' }}>
-      <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-        
-        <Link href="/" style={{ color: '#d4af37', textDecoration: 'none', display: 'inline-block', marginBottom: '2rem', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '2px' }}>
-          ← Volver a la tienda
-        </Link>
-        
-        <h1 style={{ fontSize: '3rem', color: '#fff', fontFamily: 'serif', marginBottom: '3rem', borderBottom: '1px solid #333', paddingBottom: '1rem' }}>
-          Políticas de Privacidad
-        </h1>
-
-        <div style={{ fontSize: '1.1rem', lineHeight: '1.8', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-          
-          <section>
-            <h2 style={{ fontSize: '1.5rem', color: '#d4af37', marginBottom: '1rem' }}>1. Recopilación y Uso de Datos Legítimo</h2>
-            <p style={{ marginBottom: '1rem' }}>
-              Lumina Photo Stock respeta profundamente su privacidad. Recopilamos exclusivamente la información estrictamente necesaria para procesar la compra de sus licencias fotográficas y mejorar su experiencia en nuestra plataforma.
-            </p>
-            <ul style={{ paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <li>
-                <strong>Datos de Identificación:</strong> Requerimos su nombre completo y correo electrónico para la entrega segura de los bienes digitales adquiridos.
-              </li>
-              <li>
-                <strong>Datos de Facturación:</strong> Solicitamos la dirección y detalles fiscales únicamente para emitir los comprobantes legales correspondientes.
-              </li>
-              <li>
-                <strong>Privacidad Absoluta:</strong> Garantizamos que su información personal jamás será vendida, alquilada ni compartida con terceros para fines publicitarios.
-              </li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 style={{ fontSize: '1.5rem', color: '#d4af37', marginBottom: '1rem' }}>2. Procesamiento de Pagos y Seguridad Financiera</h2>
-            <p style={{ marginBottom: '1rem' }}>
-              Su seguridad transaccional es una prioridad técnica y legal inquebrantable para nosotros.
-            </p>
-            <ul style={{ paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <li>
-                <strong>Cero Almacenamiento:</strong> Lumina Photo Stock no procesa, no retiene y no almacena en sus servidores los datos de sus tarjetas de crédito o débito.
-              </li>
-              <li>
-                <strong>Pasarelas Certificadas:</strong> Toda información financiera viaja estrictamente encriptada (SSL Encryption) hacia pasarelas de pago que cumplen con las más altas normativas internacionales de seguridad (ISO 27001).
-              </li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 style={{ fontSize: '1.5rem', color: '#d4af37', marginBottom: '1rem' }}>3. Derechos del Titular de los Datos</h2>
-            <p style={{ marginBottom: '1rem' }}>
-              Como usuario de nuestra plataforma global, usted conserva el control absoluto sobre su información personal, amparado en las leyes dominicanas e internacionales.
-            </p>
-            <ul style={{ paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <li>
-                <strong>Acceso y Rectificación:</strong> Usted puede solicitar conocer qué datos poseemos o actualizar cualquier información a través de nuestro soporte: hola@luminastock.com.
-              </li>
-              <li>
-                <strong>Cancelación:</strong> Tiene el derecho irrenunciable de solicitar la eliminación total de sus datos de nuestros servidores, siempre que no existan obligaciones legales o fiscales pendientes por transacciones previas.
-              </li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 style={{ fontSize: '1.5rem', color: '#d4af37', marginBottom: '1rem' }}>4. Uso de Cookies y Modificaciones</h2>
-            <ul style={{ paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <li>
-                <strong>Transparencia:</strong> Nos reservamos el derecho de actualizar esta política para cumplir con nuevas legislaciones globales. Cualquier cambio sustancial será notificado oportunamente a nuestros usuarios registrados.
-              </li>
-            </ul>
-          </section>
-
+    <div style={{ padding: '6rem 2rem', backgroundColor: '#0a0a0a', minHeight: '100vh' }}>
+      <div style={{ maxWidth: '800px', margin: '0 auto', backgroundColor: '#111', padding: '3rem', borderRadius: '8px', border: '1px solid #333' }}>
+        <h1 style={{ color: 'var(--accent)', marginBottom: '2rem', textAlign: 'center', fontSize: '2.5rem' }}>Políticas de Privacidad</h1>
+        <div style={{ color: '#ccc', lineHeight: '1.8', fontSize: '1.1rem', textAlign: 'justify' }}>
+          <p style={{ marginBottom: "1.5rem" }}>POLÍTICAS  DE  PRIVACIDAD  –  LUMINA  PHOTO  STOCK  1.  Recopilación  y  Uso  de  Datos  Legítimo  Lumina  Photo  Stock  respeta  profundamente  su  privacidad.  Recopilamos  exclusivamente  la</p>
+          <p style={{ marginBottom: "1.5rem" }}>información</p>
+          <p style={{ marginBottom: "1.5rem" }}>estrictamente</p>
+          <p style={{ marginBottom: "1.5rem" }}>necesaria</p>
+          <p style={{ marginBottom: "1.5rem" }}>para</p>
+          <p style={{ marginBottom: "1.5rem" }}>procesar</p>
+          <p style={{ marginBottom: "1.5rem" }}>la</p>
+          <p style={{ marginBottom: "1.5rem" }}>compra</p>
+          <p style={{ marginBottom: "1.5rem" }}>de</p>
+          <p style={{ marginBottom: "1.5rem" }}>sus</p>
+          <p style={{ marginBottom: "1.5rem" }}>licencias</p>
+          <p style={{ marginBottom: "1.5rem" }}>fotográficas</p>
+          <p style={{ marginBottom: "1.5rem" }}>y</p>
+          <p style={{ marginBottom: "1.5rem" }}>mejorar</p>
+          <p style={{ marginBottom: "1.5rem" }}>su</p>
+          <p style={{ marginBottom: "1.5rem" }}>experiencia</p>
+          <p style={{ marginBottom: "1.5rem" }}>en</p>
+          <p style={{ marginBottom: "1.5rem" }}>nuestra</p>
+          <p style={{ marginBottom: "1.5rem" }}>plataforma.</p>
+          <p style={{ marginBottom: "1.5rem" }}>●  Datos  de  Identificación:  Requerimos  su  nombre  completo  y  correo  electrónico  para</p>
+          <p style={{ marginBottom: "1.5rem" }}>la</p>
+          <p style={{ marginBottom: "1.5rem" }}>entrega</p>
+          <p style={{ marginBottom: "1.5rem" }}>segura</p>
+          <p style={{ marginBottom: "1.5rem" }}>de</p>
+          <p style={{ marginBottom: "1.5rem" }}>los</p>
+          <p style={{ marginBottom: "1.5rem" }}>bienes</p>
+          <p style={{ marginBottom: "1.5rem" }}>digitales</p>
+          <p style={{ marginBottom: "1.5rem" }}>adquiridos.</p>
+          <p style={{ marginBottom: "1.5rem" }}>●   ●  Datos  de  Facturación:  Solicitamos  la  dirección  y  detalles  fiscales  únicamente  para</p>
+          <p style={{ marginBottom: "1.5rem" }}>emitir</p>
+          <p style={{ marginBottom: "1.5rem" }}>los</p>
+          <p style={{ marginBottom: "1.5rem" }}>comprobantes</p>
+          <p style={{ marginBottom: "1.5rem" }}>legales</p>
+          <p style={{ marginBottom: "1.5rem" }}>correspondientes.</p>
+          <p style={{ marginBottom: "1.5rem" }}>●   ●  Privacidad  Absoluta:  Garantizamos  que  su  información  personal  jamás  será</p>
+          <p style={{ marginBottom: "1.5rem" }}>vendida,</p>
+          <p style={{ marginBottom: "1.5rem" }}>alquilada</p>
+          <p style={{ marginBottom: "1.5rem" }}>ni</p>
+          <p style={{ marginBottom: "1.5rem" }}>compartida</p>
+          <p style={{ marginBottom: "1.5rem" }}>con</p>
+          <p style={{ marginBottom: "1.5rem" }}>terceros</p>
+          <p style={{ marginBottom: "1.5rem" }}>para</p>
+          <p style={{ marginBottom: "1.5rem" }}>fines</p>
+          <p style={{ marginBottom: "1.5rem" }}>publicitarios.</p>
+          <p style={{ marginBottom: "1.5rem" }}>●</p>
+          <p style={{ marginBottom: "1.5rem" }}>2.  Procesamiento  de  Pagos  y  Seguridad  Financiera  Su  seguridad  transaccional  es  una  prioridad  técnica  y  legal  inquebrantable  para  nosotros.   ●  Cero  Almacenamiento:  Lumina  Photo  Stock  no  procesa,  no  retiene  y  no  almacena</p>
+          <p style={{ marginBottom: "1.5rem" }}>en</p>
+          <p style={{ marginBottom: "1.5rem" }}>sus</p>
+          <p style={{ marginBottom: "1.5rem" }}>servidores</p>
+          <p style={{ marginBottom: "1.5rem" }}>los</p>
+          <p style={{ marginBottom: "1.5rem" }}>datos</p>
+          <p style={{ marginBottom: "1.5rem" }}>de</p>
+          <p style={{ marginBottom: "1.5rem" }}>sus</p>
+          <p style={{ marginBottom: "1.5rem" }}>tarjetas</p>
+          <p style={{ marginBottom: "1.5rem" }}>de</p>
+          <p style={{ marginBottom: "1.5rem" }}>crédito</p>
+          <p style={{ marginBottom: "1.5rem" }}>o</p>
+          <p style={{ marginBottom: "1.5rem" }}>débito.</p>
+          <p style={{ marginBottom: "1.5rem" }}>●   ●  Pasarelas  Certificadas:  Toda  información  financiera  viaja  estrictamente  encriptada</p>
+          <h3 style={{ color: "#fff", marginTop: "2rem", marginBottom: "1rem" }}>(SSL</h3>
+          <p style={{ marginBottom: "1.5rem" }}>Encryption)</p>
+          <p style={{ marginBottom: "1.5rem" }}>hacia</p>
+          <p style={{ marginBottom: "1.5rem" }}>pasarelas</p>
+          <p style={{ marginBottom: "1.5rem" }}>de</p>
+          <p style={{ marginBottom: "1.5rem" }}>pago</p>
+          <p style={{ marginBottom: "1.5rem" }}>que</p>
+          <p style={{ marginBottom: "1.5rem" }}>cumplen</p>
+          <p style={{ marginBottom: "1.5rem" }}>con</p>
+          <p style={{ marginBottom: "1.5rem" }}>las</p>
+          <p style={{ marginBottom: "1.5rem" }}>más</p>
+          <p style={{ marginBottom: "1.5rem" }}>altas</p>
+          <p style={{ marginBottom: "1.5rem" }}>normativas</p>
+          <p style={{ marginBottom: "1.5rem" }}>internacionales</p>
+          <p style={{ marginBottom: "1.5rem" }}>de</p>
+          <p style={{ marginBottom: "1.5rem" }}>seguridad</p>
+          <h3 style={{ color: "#fff", marginTop: "2rem", marginBottom: "1rem" }}>(ISO</h3>
+          <p style={{ marginBottom: "1.5rem" }}>27001).</p>
+          <p style={{ marginBottom: "1.5rem" }}>●</p>
+          <p style={{ marginBottom: "1.5rem" }}>3.  Derechos  del  Titular  de  los  Datos  Como  usuario  de  nuestra  plataforma  global,  usted  conserva  el  control  absoluto  sobre  su</p>
+          <p style={{ marginBottom: "1.5rem" }}>información</p>
+          <p style={{ marginBottom: "1.5rem" }}>personal,</p>
+          <p style={{ marginBottom: "1.5rem" }}>amparado</p>
+          <p style={{ marginBottom: "1.5rem" }}>en</p>
+          <p style={{ marginBottom: "1.5rem" }}>las</p>
+          <p style={{ marginBottom: "1.5rem" }}>leyes</p>
+          <p style={{ marginBottom: "1.5rem" }}>dominicanas</p>
+          <p style={{ marginBottom: "1.5rem" }}>e</p>
+          <p style={{ marginBottom: "1.5rem" }}>internacionales.</p>
+          <p style={{ marginBottom: "1.5rem" }}>●  Acceso  y  Rectificación:  Usted  puede  solicitar  conocer  qué  datos  poseemos  o</p>
+          <p style={{ marginBottom: "1.5rem" }}>actualizar</p>
+          <p style={{ marginBottom: "1.5rem" }}>cualquier</p>
+          <p style={{ marginBottom: "1.5rem" }}>información</p>
+          <p style={{ marginBottom: "1.5rem" }}>a</p>
+          <p style={{ marginBottom: "1.5rem" }}>través</p>
+          <p style={{ marginBottom: "1.5rem" }}>de</p>
+          <p style={{ marginBottom: "1.5rem" }}>nuestro</p>
+          <p style={{ marginBottom: "1.5rem" }}>soporte:</p>
+          <p style={{ marginBottom: "1.5rem" }}>hola@luminastock.com.</p>
+          <p style={{ marginBottom: "1.5rem" }}>●   ●  Cancelación:  Tiene  el  derecho  irrenunciable  de  solicitar  la  eliminación  total  de  sus</p>
+          <p style={{ marginBottom: "1.5rem" }}>datos</p>
+          <p style={{ marginBottom: "1.5rem" }}>de</p>
+          <p style={{ marginBottom: "1.5rem" }}>nuestros</p>
+          <p style={{ marginBottom: "1.5rem" }}>servidores,</p>
+          <p style={{ marginBottom: "1.5rem" }}>siempre</p>
+          <p style={{ marginBottom: "1.5rem" }}>que</p>
+          <p style={{ marginBottom: "1.5rem" }}>no</p>
+          <p style={{ marginBottom: "1.5rem" }}>existan</p>
+          <p style={{ marginBottom: "1.5rem" }}>obligaciones</p>
+          <p style={{ marginBottom: "1.5rem" }}>legales</p>
+          <p style={{ marginBottom: "1.5rem" }}>o</p>
+          <p style={{ marginBottom: "1.5rem" }}>fiscales</p>
+          <p style={{ marginBottom: "1.5rem" }}>pendientes</p>
+          <p style={{ marginBottom: "1.5rem" }}>por</p>
+          <p style={{ marginBottom: "1.5rem" }}>transacciones</p>
+          <p style={{ marginBottom: "1.5rem" }}>previas.</p>
+          <p style={{ marginBottom: "1.5rem" }}>●</p>
+          <p style={{ marginBottom: "1.5rem" }}>4.  Uso  de  Cookies  y  Modificaciones  ●  Transparencia:  Nos  reservamos  el  derecho  de  actualizar  esta  política  para  cumplir</p>
+          <p style={{ marginBottom: "1.5rem" }}>con</p>
+          <p style={{ marginBottom: "1.5rem" }}>nuevas</p>
+          <p style={{ marginBottom: "1.5rem" }}>legislaciones</p>
+          <p style={{ marginBottom: "1.5rem" }}>globales.</p>
+          <p style={{ marginBottom: "1.5rem" }}>Cualquier</p>
+          <p style={{ marginBottom: "1.5rem" }}>cambio</p>
+          <p style={{ marginBottom: "1.5rem" }}>sustancial</p>
+          <p style={{ marginBottom: "1.5rem" }}>será</p>
+          <p style={{ marginBottom: "1.5rem" }}>notificado</p>
+          <p style={{ marginBottom: "1.5rem" }}>oportunamente</p>
+          <p style={{ marginBottom: "1.5rem" }}>a</p>
+          <p style={{ marginBottom: "1.5rem" }}>nuestros</p>
+          <p style={{ marginBottom: "1.5rem" }}>usuarios</p>
+          <p style={{ marginBottom: "1.5rem" }}>registrados.</p>
         </div>
       </div>
     </div>

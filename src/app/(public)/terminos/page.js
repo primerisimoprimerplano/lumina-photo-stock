@@ -1,60 +1,261 @@
-import Link from 'next/link';
-
 export const metadata = {
   title: 'Términos y Condiciones de Uso | Lumina Photo Stock',
-  description: 'Términos y condiciones de uso de Lumina Photo Stock.',
 };
 
-export default function TerminosPage() {
+export default function LegalPage() {
   return (
-    <div style={{ padding: '6rem 2rem', backgroundColor: '#0a0a0a', minHeight: '100vh', color: '#e0e0e0' }}>
-      <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-        
-        <Link href="/" style={{ color: '#d4af37', textDecoration: 'none', display: 'inline-block', marginBottom: '2rem', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '2px' }}>
-          ← Volver a la tienda
-        </Link>
-        
-        <h1 style={{ fontSize: '3rem', color: '#fff', fontFamily: 'serif', marginBottom: '3rem', borderBottom: '1px solid #333', paddingBottom: '1rem' }}>
-          Términos y Condiciones de Uso
-        </h1>
-
-        <div style={{ fontSize: '1.1rem', lineHeight: '1.8', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-          
-          <section>
-            <h2 style={{ fontSize: '1.5rem', color: '#d4af37', marginBottom: '1rem' }}>1. Introducción y Aceptación</h2>
-            <p>
-              Bienvenido a Lumina Photo Stock. Al acceder, navegar y utilizar este sitio web para la adquisición de fotografías digitales, usted acepta estar legalmente vinculado por los presentes Términos y Condiciones. Este acuerdo vinculante se celebra entre usted (en adelante, el "Usuario") y Ramón Arturo Herrera Rijo, operando bajo la plataforma Lumina Photo Stock (en adelante, "la Plataforma").
-            </p>
-          </section>
-
-          <section>
-            <h2 style={{ fontSize: '1.5rem', color: '#d4af37', marginBottom: '1rem' }}>2. Propiedad Intelectual y Derechos de Autor</h2>
-            <p>
-              Todo el contenido visual y fotográfico disponible en esta plataforma es una obra original y propiedad exclusiva de su autor. Dicho contenido está protegido de manera estricta y absoluta por la Ley No. 65-00 sobre Derecho de Autor de la República Dominicana y los tratados internacionales aplicables. La adquisición de una fotografía a través de Lumina Photo Stock le otorga al Usuario una licencia de uso específica (cuyos límites se detallan en el documento de "Licencias y Uso"), pero en ningún escenario constituye una cesión, venta o transferencia de los derechos patrimoniales o morales de la obra originaria.
-            </p>
-          </section>
-
-          <section>
-            <h2 style={{ fontSize: '1.5rem', color: '#d4af37', marginBottom: '1rem' }}>3. Seguridad Transaccional</h2>
-            <p>
-              El Usuario reconoce y acepta que las compras realizadas en la Plataforma se ejecutan en un entorno digital seguro. Para garantizar la integridad de sus datos financieros, nuestras pasarelas de pago cuentan con cifrado de seguridad de extremo a extremo (SSL Encryption) y operan bajo infraestructuras robustas respaldadas por certificaciones internacionales (ISO 27001).
-            </p>
-          </section>
-
-          <section>
-            <h2 style={{ fontSize: '1.5rem', color: '#d4af37', marginBottom: '1rem' }}>4. Política de Reembolsos y Entregables</h2>
-            <p>
-              Debido a la naturaleza digital e intangible de los bienes comercializados (archivos de imagen descargables en alta resolución), todas las ventas realizadas en Lumina Photo Stock son definitivas. Una vez que el sistema registra que el archivo fotográfico ha sido descargado exitosamente por el Usuario, no aplicará ningún tipo de reembolso, crédito o devolución.
-            </p>
-          </section>
-
-          <section>
-            <h2 style={{ fontSize: '1.5rem', color: '#d4af37', marginBottom: '1rem' }}>5. Ley Aplicable y Resolución de Conflictos</h2>
-            <p>
-              Estos Términos y Condiciones se regirán, interpretarán y aplicarán de conformidad con las leyes vigentes de la República Dominicana. Cualquier disputa, controversia o reclamo que surja del uso de esta plataforma o de la compra de licencias fotográficas, será sometida a la jurisdicción exclusiva de los tribunales competentes de la República Dominicana.
-            </p>
-          </section>
-
+    <div style={{ padding: '6rem 2rem', backgroundColor: '#0a0a0a', minHeight: '100vh' }}>
+      <div style={{ maxWidth: '800px', margin: '0 auto', backgroundColor: '#111', padding: '3rem', borderRadius: '8px', border: '1px solid #333' }}>
+        <h1 style={{ color: 'var(--accent)', marginBottom: '2rem', textAlign: 'center', fontSize: '2.5rem' }}>Términos y Condiciones de Uso</h1>
+        <div style={{ color: '#ccc', lineHeight: '1.8', fontSize: '1.1rem', textAlign: 'justify' }}>
+          <p style={{ marginBottom: "1.5rem" }}>TÉRMINOS  Y  CONDICIONES  DE  USO  –  LUMINA  PHOTO  STOCK   1.  Introducción  y  Aceptación  Bienvenido  a  Lumina  Photo  Stock.  Al  acceder,  navegar  y  utilizar  este  sitio  web  para  la</p>
+          <p style={{ marginBottom: "1.5rem" }}>adquisición</p>
+          <p style={{ marginBottom: "1.5rem" }}>de</p>
+          <p style={{ marginBottom: "1.5rem" }}>fotografías</p>
+          <p style={{ marginBottom: "1.5rem" }}>digitales,</p>
+          <p style={{ marginBottom: "1.5rem" }}>usted</p>
+          <p style={{ marginBottom: "1.5rem" }}>acepta</p>
+          <p style={{ marginBottom: "1.5rem" }}>estar</p>
+          <p style={{ marginBottom: "1.5rem" }}>legalmente</p>
+          <p style={{ marginBottom: "1.5rem" }}>vinculado</p>
+          <p style={{ marginBottom: "1.5rem" }}>por</p>
+          <p style={{ marginBottom: "1.5rem" }}>los</p>
+          <p style={{ marginBottom: "1.5rem" }}>presentes</p>
+          <p style={{ marginBottom: "1.5rem" }}>Términos</p>
+          <p style={{ marginBottom: "1.5rem" }}>y</p>
+          <p style={{ marginBottom: "1.5rem" }}>Condiciones.</p>
+          <p style={{ marginBottom: "1.5rem" }}>Este</p>
+          <p style={{ marginBottom: "1.5rem" }}>acuerdo</p>
+          <p style={{ marginBottom: "1.5rem" }}>vinculante</p>
+          <p style={{ marginBottom: "1.5rem" }}>se</p>
+          <p style={{ marginBottom: "1.5rem" }}>celebra</p>
+          <p style={{ marginBottom: "1.5rem" }}>entre</p>
+          <p style={{ marginBottom: "1.5rem" }}>usted</p>
+          <p style={{ marginBottom: "1.5rem" }}>(en</p>
+          <p style={{ marginBottom: "1.5rem" }}>adelante,</p>
+          <p style={{ marginBottom: "1.5rem" }}>el</p>
+          <p style={{ marginBottom: "1.5rem" }}>"Usuario")</p>
+          <p style={{ marginBottom: "1.5rem" }}>y</p>
+          <p style={{ marginBottom: "1.5rem" }}>Ramón</p>
+          <p style={{ marginBottom: "1.5rem" }}>Arturo</p>
+          <p style={{ marginBottom: "1.5rem" }}>Herrera</p>
+          <p style={{ marginBottom: "1.5rem" }}>Rijo,</p>
+          <p style={{ marginBottom: "1.5rem" }}>operando</p>
+          <p style={{ marginBottom: "1.5rem" }}>bajo</p>
+          <p style={{ marginBottom: "1.5rem" }}>la</p>
+          <p style={{ marginBottom: "1.5rem" }}>plataforma</p>
+          <p style={{ marginBottom: "1.5rem" }}>Lumina</p>
+          <p style={{ marginBottom: "1.5rem" }}>Photo</p>
+          <p style={{ marginBottom: "1.5rem" }}>Stock</p>
+          <p style={{ marginBottom: "1.5rem" }}>(en</p>
+          <p style={{ marginBottom: "1.5rem" }}>adelante,</p>
+          <p style={{ marginBottom: "1.5rem" }}>"la</p>
+          <p style={{ marginBottom: "1.5rem" }}>Plataforma").</p>
+          <p style={{ marginBottom: "1.5rem" }}>2.  Propiedad  Intelectual  y  Derechos  de  Autor  Todo  el  contenido  visual  y  fotográfico  disponible  en  esta  plataforma  es  una  obra  original  y</p>
+          <p style={{ marginBottom: "1.5rem" }}>propiedad</p>
+          <p style={{ marginBottom: "1.5rem" }}>exclusiva</p>
+          <p style={{ marginBottom: "1.5rem" }}>de</p>
+          <p style={{ marginBottom: "1.5rem" }}>su</p>
+          <p style={{ marginBottom: "1.5rem" }}>autor.</p>
+          <p style={{ marginBottom: "1.5rem" }}>Dicho</p>
+          <p style={{ marginBottom: "1.5rem" }}>contenido</p>
+          <p style={{ marginBottom: "1.5rem" }}>está</p>
+          <p style={{ marginBottom: "1.5rem" }}>protegido</p>
+          <p style={{ marginBottom: "1.5rem" }}>de</p>
+          <p style={{ marginBottom: "1.5rem" }}>manera</p>
+          <p style={{ marginBottom: "1.5rem" }}>estricta</p>
+          <p style={{ marginBottom: "1.5rem" }}>y</p>
+          <p style={{ marginBottom: "1.5rem" }}>absoluta</p>
+          <p style={{ marginBottom: "1.5rem" }}>por</p>
+          <p style={{ marginBottom: "1.5rem" }}>la</p>
+          <p style={{ marginBottom: "1.5rem" }}>Ley</p>
+          <p style={{ marginBottom: "1.5rem" }}>No.</p>
+          <p style={{ marginBottom: "1.5rem" }}>65-00</p>
+          <p style={{ marginBottom: "1.5rem" }}>sobre</p>
+          <p style={{ marginBottom: "1.5rem" }}>Derecho</p>
+          <p style={{ marginBottom: "1.5rem" }}>de</p>
+          <p style={{ marginBottom: "1.5rem" }}>Autor</p>
+          <p style={{ marginBottom: "1.5rem" }}>de</p>
+          <p style={{ marginBottom: "1.5rem" }}>la</p>
+          <p style={{ marginBottom: "1.5rem" }}>República</p>
+          <p style={{ marginBottom: "1.5rem" }}>Dominicana</p>
+          <p style={{ marginBottom: "1.5rem" }}>y</p>
+          <p style={{ marginBottom: "1.5rem" }}>los</p>
+          <p style={{ marginBottom: "1.5rem" }}>tratados</p>
+          <p style={{ marginBottom: "1.5rem" }}>internacionales</p>
+          <p style={{ marginBottom: "1.5rem" }}>aplicables.</p>
+          <p style={{ marginBottom: "1.5rem" }}>La</p>
+          <p style={{ marginBottom: "1.5rem" }}>adquisición</p>
+          <p style={{ marginBottom: "1.5rem" }}>de</p>
+          <p style={{ marginBottom: "1.5rem" }}>una</p>
+          <p style={{ marginBottom: "1.5rem" }}>fotografía</p>
+          <p style={{ marginBottom: "1.5rem" }}>a</p>
+          <p style={{ marginBottom: "1.5rem" }}>través</p>
+          <p style={{ marginBottom: "1.5rem" }}>de</p>
+          <p style={{ marginBottom: "1.5rem" }}>Lumina</p>
+          <p style={{ marginBottom: "1.5rem" }}>Photo</p>
+          <p style={{ marginBottom: "1.5rem" }}>Stock</p>
+          <p style={{ marginBottom: "1.5rem" }}>le</p>
+          <p style={{ marginBottom: "1.5rem" }}>otorga</p>
+          <p style={{ marginBottom: "1.5rem" }}>al</p>
+          <p style={{ marginBottom: "1.5rem" }}>Usuario</p>
+          <p style={{ marginBottom: "1.5rem" }}>una</p>
+          <p style={{ marginBottom: "1.5rem" }}>licencia</p>
+          <p style={{ marginBottom: "1.5rem" }}>de</p>
+          <p style={{ marginBottom: "1.5rem" }}>uso</p>
+          <p style={{ marginBottom: "1.5rem" }}>específica</p>
+          <p style={{ marginBottom: "1.5rem" }}>(cuyos</p>
+          <p style={{ marginBottom: "1.5rem" }}>límites</p>
+          <p style={{ marginBottom: "1.5rem" }}>se</p>
+          <p style={{ marginBottom: "1.5rem" }}>detallan</p>
+          <p style={{ marginBottom: "1.5rem" }}>en</p>
+          <p style={{ marginBottom: "1.5rem" }}>el</p>
+          <p style={{ marginBottom: "1.5rem" }}>documento</p>
+          <p style={{ marginBottom: "1.5rem" }}>de</p>
+          <p style={{ marginBottom: "1.5rem" }}>"Licencias</p>
+          <p style={{ marginBottom: "1.5rem" }}>y</p>
+          <p style={{ marginBottom: "1.5rem" }}>Uso"),</p>
+          <p style={{ marginBottom: "1.5rem" }}>pero</p>
+          <p style={{ marginBottom: "1.5rem" }}>en</p>
+          <p style={{ marginBottom: "1.5rem" }}>ningún</p>
+          <p style={{ marginBottom: "1.5rem" }}>escenario</p>
+          <p style={{ marginBottom: "1.5rem" }}>constituye</p>
+          <p style={{ marginBottom: "1.5rem" }}>una</p>
+          <p style={{ marginBottom: "1.5rem" }}>cesión,</p>
+          <p style={{ marginBottom: "1.5rem" }}>venta</p>
+          <p style={{ marginBottom: "1.5rem" }}>o</p>
+          <p style={{ marginBottom: "1.5rem" }}>transferencia</p>
+          <p style={{ marginBottom: "1.5rem" }}>de</p>
+          <p style={{ marginBottom: "1.5rem" }}>los</p>
+          <p style={{ marginBottom: "1.5rem" }}>derechos</p>
+          <p style={{ marginBottom: "1.5rem" }}>patrimoniales</p>
+          <p style={{ marginBottom: "1.5rem" }}>o</p>
+          <p style={{ marginBottom: "1.5rem" }}>morales</p>
+          <p style={{ marginBottom: "1.5rem" }}>de</p>
+          <p style={{ marginBottom: "1.5rem" }}>la</p>
+          <p style={{ marginBottom: "1.5rem" }}>obra</p>
+          <p style={{ marginBottom: "1.5rem" }}>originaria.</p>
+          <p style={{ marginBottom: "1.5rem" }}>3.  Seguridad  Transaccional  El  Usuario  reconoce  y  acepta  que  las  compras  realizadas  en  la  Plataforma  se  ejecutan  en</p>
+          <p style={{ marginBottom: "1.5rem" }}>un</p>
+          <p style={{ marginBottom: "1.5rem" }}>entorno</p>
+          <p style={{ marginBottom: "1.5rem" }}>digital</p>
+          <p style={{ marginBottom: "1.5rem" }}>seguro.</p>
+          <p style={{ marginBottom: "1.5rem" }}>Para</p>
+          <p style={{ marginBottom: "1.5rem" }}>garantizar</p>
+          <p style={{ marginBottom: "1.5rem" }}>la</p>
+          <p style={{ marginBottom: "1.5rem" }}>integridad</p>
+          <p style={{ marginBottom: "1.5rem" }}>de</p>
+          <p style={{ marginBottom: "1.5rem" }}>sus</p>
+          <p style={{ marginBottom: "1.5rem" }}>datos</p>
+          <p style={{ marginBottom: "1.5rem" }}>financieros,</p>
+          <p style={{ marginBottom: "1.5rem" }}>nuestras</p>
+          <p style={{ marginBottom: "1.5rem" }}>pasarelas</p>
+          <p style={{ marginBottom: "1.5rem" }}>de</p>
+          <p style={{ marginBottom: "1.5rem" }}>pago</p>
+          <p style={{ marginBottom: "1.5rem" }}>cuentan</p>
+          <p style={{ marginBottom: "1.5rem" }}>con</p>
+          <p style={{ marginBottom: "1.5rem" }}>cifrado</p>
+          <p style={{ marginBottom: "1.5rem" }}>de</p>
+          <p style={{ marginBottom: "1.5rem" }}>seguridad</p>
+          <p style={{ marginBottom: "1.5rem" }}>de</p>
+          <p style={{ marginBottom: "1.5rem" }}>extremo</p>
+          <p style={{ marginBottom: "1.5rem" }}>a</p>
+          <p style={{ marginBottom: "1.5rem" }}>extremo</p>
+          <h3 style={{ color: "#fff", marginTop: "2rem", marginBottom: "1rem" }}>(SSL</h3>
+          <p style={{ marginBottom: "1.5rem" }}>Encryption)</p>
+          <p style={{ marginBottom: "1.5rem" }}>y</p>
+          <p style={{ marginBottom: "1.5rem" }}>operan</p>
+          <p style={{ marginBottom: "1.5rem" }}>bajo</p>
+          <p style={{ marginBottom: "1.5rem" }}>infraestructuras</p>
+          <p style={{ marginBottom: "1.5rem" }}>robustas</p>
+          <p style={{ marginBottom: "1.5rem" }}>respaldadas</p>
+          <p style={{ marginBottom: "1.5rem" }}>por</p>
+          <p style={{ marginBottom: "1.5rem" }}>certificaciones</p>
+          <p style={{ marginBottom: "1.5rem" }}>internacionales</p>
+          <h3 style={{ color: "#fff", marginTop: "2rem", marginBottom: "1rem" }}>(ISO</h3>
+          <p style={{ marginBottom: "1.5rem" }}>27001).</p>
+          <p style={{ marginBottom: "1.5rem" }}>4.  Política  de  Reembolsos  y  Entregables  Debido  a  la  naturaleza  digital  e  intangible  de  los  bienes  comercializados  (archivos  de</p>
+          <p style={{ marginBottom: "1.5rem" }}>imagen</p>
+          <p style={{ marginBottom: "1.5rem" }}>descargables</p>
+          <p style={{ marginBottom: "1.5rem" }}>en</p>
+          <p style={{ marginBottom: "1.5rem" }}>alta</p>
+          <p style={{ marginBottom: "1.5rem" }}>resolución),</p>
+          <p style={{ marginBottom: "1.5rem" }}>todas</p>
+          <p style={{ marginBottom: "1.5rem" }}>las</p>
+          <p style={{ marginBottom: "1.5rem" }}>ventas</p>
+          <p style={{ marginBottom: "1.5rem" }}>realizadas</p>
+          <p style={{ marginBottom: "1.5rem" }}>en</p>
+          <p style={{ marginBottom: "1.5rem" }}>Lumina</p>
+          <p style={{ marginBottom: "1.5rem" }}>Photo</p>
+          <p style={{ marginBottom: "1.5rem" }}>Stock</p>
+          <p style={{ marginBottom: "1.5rem" }}>son</p>
+          <p style={{ marginBottom: "1.5rem" }}>definitivas.</p>
+          <p style={{ marginBottom: "1.5rem" }}>Una</p>
+          <p style={{ marginBottom: "1.5rem" }}>vez</p>
+          <p style={{ marginBottom: "1.5rem" }}>que</p>
+          <p style={{ marginBottom: "1.5rem" }}>el</p>
+          <p style={{ marginBottom: "1.5rem" }}>sistema</p>
+          <p style={{ marginBottom: "1.5rem" }}>registra</p>
+          <p style={{ marginBottom: "1.5rem" }}>que</p>
+          <p style={{ marginBottom: "1.5rem" }}>el</p>
+          <p style={{ marginBottom: "1.5rem" }}>archivo</p>
+          <p style={{ marginBottom: "1.5rem" }}>fotográfico</p>
+          <p style={{ marginBottom: "1.5rem" }}>ha</p>
+          <p style={{ marginBottom: "1.5rem" }}>sido</p>
+          <p style={{ marginBottom: "1.5rem" }}>descargado</p>
+          <p style={{ marginBottom: "1.5rem" }}>exitosamente</p>
+          <p style={{ marginBottom: "1.5rem" }}>por</p>
+          <p style={{ marginBottom: "1.5rem" }}>el</p>
+          <p style={{ marginBottom: "1.5rem" }}>Usuario,</p>
+          <p style={{ marginBottom: "1.5rem" }}>no</p>
+          <p style={{ marginBottom: "1.5rem" }}>aplicará</p>
+          <p style={{ marginBottom: "1.5rem" }}>ningún</p>
+          <p style={{ marginBottom: "1.5rem" }}>tipo</p>
+          <p style={{ marginBottom: "1.5rem" }}>de</p>
+          <p style={{ marginBottom: "1.5rem" }}>reembolso,</p>
+          <p style={{ marginBottom: "1.5rem" }}>crédito</p>
+          <p style={{ marginBottom: "1.5rem" }}>o</p>
+          <p style={{ marginBottom: "1.5rem" }}>devolución.</p>
+          <p style={{ marginBottom: "1.5rem" }}>5.  Ley  Aplicable  y  Resolución  de  Conflictos  Estos  Términos  y  Condiciones  se  regirán,  interpretarán  y  aplicarán  de  conformidad  con  las</p>
+          <p style={{ marginBottom: "1.5rem" }}>leyes</p>
+          <p style={{ marginBottom: "1.5rem" }}>vigentes</p>
+          <p style={{ marginBottom: "1.5rem" }}>de</p>
+          <p style={{ marginBottom: "1.5rem" }}>la</p>
+          <p style={{ marginBottom: "1.5rem" }}>República</p>
+          <p style={{ marginBottom: "1.5rem" }}>Dominicana.</p>
+          <p style={{ marginBottom: "1.5rem" }}>Cualquier</p>
+          <p style={{ marginBottom: "1.5rem" }}>disputa,</p>
+          <p style={{ marginBottom: "1.5rem" }}>controversia</p>
+          <p style={{ marginBottom: "1.5rem" }}>o</p>
+          <p style={{ marginBottom: "1.5rem" }}>reclamo</p>
+          <p style={{ marginBottom: "1.5rem" }}>que</p>
+          <p style={{ marginBottom: "1.5rem" }}>surja</p>
+          <p style={{ marginBottom: "1.5rem" }}>del</p>
+          <p style={{ marginBottom: "1.5rem" }}>uso</p>
+          <p style={{ marginBottom: "1.5rem" }}>de</p>
+          <p style={{ marginBottom: "1.5rem" }}>esta</p>
+          <p style={{ marginBottom: "1.5rem" }}>plataforma</p>
+          <p style={{ marginBottom: "1.5rem" }}>o</p>
+          <p style={{ marginBottom: "1.5rem" }}>de</p>
+          <p style={{ marginBottom: "1.5rem" }}>la</p>
+          <p style={{ marginBottom: "1.5rem" }}>compra</p>
+          <p style={{ marginBottom: "1.5rem" }}>de</p>
+          <p style={{ marginBottom: "1.5rem" }}>licencias</p>
+          <p style={{ marginBottom: "1.5rem" }}>fotográficas,</p>
+          <p style={{ marginBottom: "1.5rem" }}>será</p>
+          <p style={{ marginBottom: "1.5rem" }}>sometida</p>
+          <p style={{ marginBottom: "1.5rem" }}>a</p>
+          <p style={{ marginBottom: "1.5rem" }}>la</p>
+          <p style={{ marginBottom: "1.5rem" }}>jurisdicción</p>
+          <p style={{ marginBottom: "1.5rem" }}>exclusiva</p>
+          <p style={{ marginBottom: "1.5rem" }}>de</p>
+          <p style={{ marginBottom: "1.5rem" }}>los</p>
+          <p style={{ marginBottom: "1.5rem" }}>tribunales</p>
+          <p style={{ marginBottom: "1.5rem" }}>competentes</p>
+          <p style={{ marginBottom: "1.5rem" }}>de</p>
+          <p style={{ marginBottom: "1.5rem" }}>la</p>
+          <p style={{ marginBottom: "1.5rem" }}>República</p>
+          <p style={{ marginBottom: "1.5rem" }}>Dominicana.</p>
         </div>
       </div>
     </div>
