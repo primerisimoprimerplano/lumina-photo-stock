@@ -3,33 +3,69 @@
 import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import Image from 'next/image';
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 export default function CartSidebar() {
-  const { isCartOpen, closeCart, cartItems, removeFromCart, cartTotal } = useCart();
+  const { isCartOpen, closeCart, cartItems, removeFromCart, cartTotal, clearCart } = useCart();
   const [isProcessing, setIsProcessing] = useState(false);
-
-    const [legalAccepted, setLegalAccepted] = useState(false);
+  const [legalAccepted, setLegalAccepted] = useState(false);
 
   if (!isCartOpen) return null;
 
-  const handleCheckout = async () => {
-    if (!legalAccepted) return;
-    setIsProcessing(true);
+  const initialOptions = {
+    clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || "test",
+    currency: "USD",
+    intent: "capture",
+  };
+
+  const createOrder = async (data, actions) => {
     try {
-      const response = await fetch('/api/checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/paypal/create-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ items: cartItems }),
       });
       
-      const { url } = await response.json();
-      if (url) {
-        window.location.href = url; // Redirect to Stripe Checkout
+      const orderData = await response.json();
+
+      if (orderData.id) {
+        return orderData.id;
+      } else {
+        const errorDetail = orderData?.details?.[0];
+        const errorMessage = errorDetail
+          ? `${errorDetail.issue} ${errorDetail.description} (${orderData.debug_id})`
+          : JSON.stringify(orderData);
+        throw new Error(errorMessage);
       }
     } catch (error) {
-      console.error('Error during checkout:', error);
-    } finally {
-      setIsProcessing(false);
+      console.error("Error creating PayPal order:", error);
+      throw error;
+    }
+  };
+
+  const onApprove = async (data, actions) => {
+    try {
+      const response = await fetch("/api/paypal/capture-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ orderID: data.orderID }),
+      });
+      
+      const orderData = await response.json();
+      
+      const errorDetail = orderData?.details?.[0];
+      if (errorDetail?.issue === "INSTRUMENT_DECLINED") {
+        return actions.restart();
+      } else if (errorDetail) {
+        throw new Error(`${errorDetail.description} (${orderData.debug_id})`);
+      } else {
+        // Successful capture!
+        console.log("Capture result", orderData);
+        clearCart();
+        window.location.href = "/success";
+      }
+    } catch (error) {
+      console.error("Error capturing PayPal payment:", error);
     }
   };
 
@@ -160,26 +196,21 @@ export default function CartSidebar() {
               </label>
             </div>
             
-            <button 
-              onClick={handleCheckout}
-              disabled={isProcessing || !legalAccepted}
-              style={{
-                width: '100%',
-                padding: '1rem',
-                background: (isProcessing || !legalAccepted) ? '#333' : 'var(--accent)',
-                color: (isProcessing || !legalAccepted) ? '#888' : '#000',
-                border: 'none',
-                borderRadius: '4px',
-                fontSize: '1.1rem',
-                fontWeight: 'bold',
-                cursor: (isProcessing || !legalAccepted) ? 'not-allowed' : 'pointer',
-                opacity: 1,
-                transition: 'all 0.2s'
-              }}
-            >
-              {isProcessing ? 'PROCESANDO...' : 'PROCEDER AL PAGO'}
-            </button>
-            <p style={{ textAlign: 'center', fontSize: '0.75rem', color: 'var(--text-secondary)', margin: '1rem 0 0 0' }}>Pagos seguros procesados por Stripe</p>
+            <div style={{ position: 'relative', zIndex: 0, opacity: legalAccepted ? 1 : 0.5, pointerEvents: legalAccepted ? 'auto' : 'none' }}>
+              <PayPalScriptProvider options={initialOptions}>
+                <PayPalButtons
+                  style={{ layout: "vertical", color: "gold", shape: "rect", label: "pay" }}
+                  createOrder={createOrder}
+                  onApprove={onApprove}
+                />
+              </PayPalScriptProvider>
+            </div>
+            {!legalAccepted && (
+              <p style={{ textAlign: 'center', fontSize: '0.75rem', color: '#ff6b6b', margin: '0.5rem 0 0 0' }}>
+                Debes aceptar los términos para proceder al pago
+              </p>
+            )}
+            <p style={{ textAlign: 'center', fontSize: '0.75rem', color: 'var(--text-secondary)', margin: '1rem 0 0 0' }}>Pagos seguros procesados por PayPal</p>
           </div>
         )}
       </div>
