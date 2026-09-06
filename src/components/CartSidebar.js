@@ -19,6 +19,13 @@ export default function CartSidebar() {
   };
 
   const createOrder = async (data, actions) => {
+    if (!process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID) {
+      // Modo de prueba visual (sin backend)
+      return actions.order.create({
+        purchase_units: [{ amount: { value: cartTotal.toString() } }]
+      });
+    }
+
     try {
       const response = await fetch("/api/paypal/create-order", {
         method: "POST",
@@ -44,6 +51,13 @@ export default function CartSidebar() {
   };
 
   const onApprove = async (data, actions) => {
+    if (!process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID) {
+      // Modo de prueba visual (sin backend)
+      clearCart();
+      window.location.href = "/success";
+      return;
+    }
+
     try {
       const response = await fetch("/api/paypal/capture-order", {
         method: "POST",
