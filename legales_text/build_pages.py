@@ -1,4 +1,5 @@
 import os
+import re
 
 base_dir = r'C:\Users\Edicion PC\.gemini\antigravity\scratch\stock-gallery'
 text_dir = os.path.join(base_dir, 'legales_text')
@@ -33,15 +34,32 @@ for filename, (slug, title) in files_map.items():
     with open(filepath, 'r', encoding='utf-8') as f:
         text = f.read()
     
+    # Clean up PDF extraction weirdness (join all words into one block)
+    # Remove newlines
+    text = text.replace('\n', ' ')
+    # Remove multiple spaces
+    text = re.sub(r'\s+', ' ', text)
+    
+    # Now split into paragraphs manually based on numbers like "1. ", "2. ", or "a) "
+    # We can split the string using a regex
+    # We want to match things like "1. ", "a) ", "●"
+    
+    # First, let's insert a newline before them
+    text = re.sub(r'(\s\d+\.\s)', r'\n\1', text)
+    text = re.sub(r'(\s[a-z]\)\s)', r'\n\1', text)
+    text = re.sub(r'(\s●\s)', r'\n\1', text)
+    
+    # Remove the title from the text body if it exists
+    text = text.replace('TÉRMINOS Y CONDICIONES DE USO – LUMINA PHOTO STOCK', '')
+    text = text.replace('LICENCIAS Y USO DE FOTOGRAFÍAS – LUMINA PHOTO STOCK', '')
+    text = text.replace('POLÍTICAS DE PRIVACIDAD – LUMINA PHOTO STOCK', '')
+    
     paragraphs = []
     for line in text.split('\n'):
         line = line.strip()
         if not line:
             continue
-        if len(line) < 80 and line.isupper() and not line.startswith('HTTP'):
-             paragraphs.append(f'          <h3 style={{{{ color: "#fff", marginTop: "2rem", marginBottom: "1rem" }}}}>{line}</h3>')
-        else:
-             paragraphs.append(f'          <p style={{{{ marginBottom: "1.5rem" }}}}>{line}</p>')
+        paragraphs.append(f'          <p style={{{{ marginBottom: "1.5rem" }}}}>{line}</p>')
              
     content_jsx = '\n'.join(paragraphs)
     
@@ -52,4 +70,4 @@ for filename, (slug, title) in files_map.items():
     with open(page_path, 'w', encoding='utf-8') as f:
         f.write(template.format(title=title, content=content_jsx))
     
-    print(f'Created {page_path}')
+    print(f'Fixed {page_path}')
