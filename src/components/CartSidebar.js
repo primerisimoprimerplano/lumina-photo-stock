@@ -22,7 +22,10 @@ export default function CartSidebar() {
     if (!process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID) {
       // Modo de prueba visual (sin backend)
       return actions.order.create({
-        purchase_units: [{ amount: { value: cartTotal.toString() } }]
+        purchase_units: [{ amount: { value: cartTotal.toString() } }],
+        application_context: {
+          shipping_preference: "NO_SHIPPING"
+        }
       });
     }
 
