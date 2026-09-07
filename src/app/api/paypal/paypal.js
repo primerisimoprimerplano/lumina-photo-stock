@@ -1,5 +1,5 @@
 const { NEXT_PUBLIC_PAYPAL_CLIENT_ID, PAYPAL_SECRET } = process.env;
-const base = "https://api-m.sandbox.paypal.com"; // Usaremos sandbox por ahora
+const base = "https://api-m.paypal.com"; // Entorno de producción (Live) para cobros reales
 
 export async function createOrder(cartTotal) {
   const accessToken = await generateAccessToken();
