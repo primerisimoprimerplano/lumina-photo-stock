@@ -24,7 +24,7 @@ function SuccessContent() {
       <div style={{ minHeight: '80vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '2rem' }}>
         <h1 style={{ color: 'var(--accent)', fontSize: '3rem', marginBottom: '1rem' }}>¡Descarga Exitosa!</h1>
         <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', maxWidth: '600px', marginBottom: '2rem' }}>
-          Gracias por usar tu código promocional. Te hemos enviado un correo electrónico con los enlaces para descargar tus fotografías.
+          Gracias por usar tu código promocional. Tus fotografías deberían haberse descargado automáticamente en tu navegador.
         </p>
         
         <div style={{ padding: '2rem', background: 'rgba(212, 175, 55, 0.1)', border: '1px solid var(--accent)', borderRadius: '8px', marginBottom: '2rem', maxWidth: '600px' }}>
@@ -38,10 +38,8 @@ function SuccessContent() {
           </div>
         </div>
 
-        <Link href="/">
-          <button className="btn-contact" style={{ padding: '1rem 2rem', fontSize: '1.1rem' }}>
-            Volver a la Galería
-          </button>
+        <Link href="/" className="btn-contact" style={{ padding: '1rem 2rem', fontSize: '1.1rem', textDecoration: 'none' }}>
+          Volver a la Galería
         </Link>
       </div>
     );
@@ -61,10 +59,8 @@ function SuccessContent() {
         <p style={{ color: 'var(--text-secondary)' }}>3. ¡Disfruta usando las imágenes en tus proyectos creativos!</p>
       </div>
 
-      <Link href="/">
-        <button className="btn-contact" style={{ padding: '1rem 2rem', fontSize: '1.1rem' }}>
-          Volver a la Galería
-        </button>
+      <Link href="/" className="btn-contact" style={{ padding: '1rem 2rem', fontSize: '1.1rem', textDecoration: 'none' }}>
+        Volver a la Galería
       </Link>
     </div>
   );
