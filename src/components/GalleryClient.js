@@ -15,6 +15,13 @@ export default function GalleryClient({ images }) {
     full: 6
   };
 
+  const handleCopyLink = () => {
+    if (!selectedImage) return;
+    const url = `${window.location.origin}/foto/${selectedImage.public_id}`;
+    navigator.clipboard.writeText(url);
+    alert('¡Enlace de la foto copiado! Pégalo en Facebook u otras redes para compartirla.');
+  };
+
   const handleAddToCart = () => {
     if (!selectedImage) return;
     
@@ -95,7 +102,12 @@ export default function GalleryClient({ images }) {
             
             <div className="modal-details">
               <div>
-                <h2>{selectedImage.name}</h2>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <h2>{selectedImage.name}</h2>
+                  <button onClick={handleCopyLink} style={{ background: 'transparent', border: '1px solid var(--accent)', color: 'var(--accent)', padding: '0.4rem 0.8rem', borderRadius: '4px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 'bold', fontSize: '0.9rem' }}>
+                    🔗 Copiar Enlace
+                  </button>
+                </div>
                 
                 <div style={{ margin: '2rem 0' }}>
                   <h3 style={{ fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '1rem', color: 'var(--text-secondary)' }}>Selecciona el tamaño:</h3>
