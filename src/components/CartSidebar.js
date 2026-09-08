@@ -226,6 +226,7 @@ export default function CartSidebar() {
                   style={{ layout: "vertical", color: "gold", shape: "rect", label: "pay" }}
                   createOrder={createOrder}
                   onApprove={onApprove}
+                  forceReRender={[cartTotal]}
                 />
               </PayPalScriptProvider>
             </div>
