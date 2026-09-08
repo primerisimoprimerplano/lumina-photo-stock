@@ -140,61 +140,68 @@ export default function CartSidebar() {
           </button>
         </div>
 
-        {/* Cart Items */}
+        {/* Scrollable Content Area */}
         <div style={{
           flex: 1,
           overflowY: 'auto',
-          padding: '1.5rem',
           display: 'flex',
           flexDirection: 'column',
-          gap: '1rem',
         }}>
-          {cartItems.length === 0 ? (
-            <div style={{ textAlign: 'center', color: 'var(--text-secondary)', marginTop: '3rem' }}>
-              <p>Tu carrito está vacío.</p>
-            </div>
-          ) : (
-            cartItems.map((item) => (
-              <div key={item.cartItemId} style={{
-                display: 'flex',
-                gap: '1rem',
-                borderBottom: '1px solid var(--border)',
-                paddingBottom: '1rem',
-              }}>
-                <div style={{ position: 'relative', width: '80px', height: '80px', borderRadius: '4px', overflow: 'hidden' }}>
-                  <Image src={item.url || `/api/local-image?path=${encodeURIComponent(item.path)}`} alt={item.name} fill style={{ objectFit: 'cover' }} unoptimized={true} />
-                </div>
-                <div style={{ flex: 1 }}>
-                  <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '1rem' }}>{item.name}</h4>
-                  <p style={{ margin: 0, fontSize: '0.8rem', color: 'var(--text-secondary)', textTransform: 'capitalize' }}>Tamaño: {item.size}</p>
-                  <p style={{ margin: '0.5rem 0 0 0', fontWeight: 'bold', color: 'var(--accent)' }}>${item.price}.00 USD</p>
-                </div>
-                <button 
-                  onClick={() => removeFromCart(item.cartItemId)}
-                  style={{
-                    background: 'transparent',
-                    border: 'none',
-                    color: 'var(--text-secondary)',
-                    cursor: 'pointer',
-                    fontSize: '1rem',
-                    height: 'fit-content'
-                  }}
-                  title="Eliminar del carrito"
-                >
-                  🗑️
-                </button>
-              </div>
-            ))
-          )}
-        </div>
-
-        {/* Footer */}
-        {cartItems.length > 0 && (
+          {/* Cart Items */}
           <div style={{
             padding: '1.5rem',
-            borderTop: '1px solid var(--border)',
-            background: 'rgba(255, 255, 255, 0.02)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1rem',
+            flex: 1,
           }}>
+            {cartItems.length === 0 ? (
+              <div style={{ textAlign: 'center', color: 'var(--text-secondary)', marginTop: '3rem' }}>
+                <p>Tu carrito está vacío.</p>
+              </div>
+            ) : (
+              cartItems.map((item) => (
+                <div key={item.cartItemId} style={{
+                  display: 'flex',
+                  gap: '1rem',
+                  borderBottom: '1px solid var(--border)',
+                  paddingBottom: '1rem',
+                }}>
+                  <div style={{ position: 'relative', width: '80px', height: '80px', borderRadius: '4px', overflow: 'hidden' }}>
+                    <Image src={item.url || `/api/local-image?path=${encodeURIComponent(item.path)}`} alt={item.name} fill style={{ objectFit: 'cover' }} unoptimized={true} />
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '1rem' }}>{item.name}</h4>
+                    <p style={{ margin: 0, fontSize: '0.8rem', color: 'var(--text-secondary)', textTransform: 'capitalize' }}>Tamaño: {item.size}</p>
+                    <p style={{ margin: '0.5rem 0 0 0', fontWeight: 'bold', color: 'var(--accent)' }}>${item.price}.00 USD</p>
+                  </div>
+                  <button 
+                    onClick={() => removeFromCart(item.cartItemId)}
+                    style={{
+                      background: 'transparent',
+                      border: 'none',
+                      color: 'var(--text-secondary)',
+                      cursor: 'pointer',
+                      fontSize: '1rem',
+                      height: 'fit-content'
+                    }}
+                    title="Eliminar del carrito"
+                  >
+                    🗑️
+                  </button>
+                </div>
+              ))
+            )}
+          </div>
+
+          {/* Footer */}
+          {cartItems.length > 0 && (
+            <div style={{
+              padding: '1.5rem',
+              borderTop: '1px solid var(--border)',
+              background: 'rgba(255, 255, 255, 0.02)',
+              marginTop: 'auto',
+            }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1.5rem', fontSize: '1.2rem', fontWeight: 'bold' }}>
               <span>Total:</span>
               <span style={{ color: 'var(--accent)' }}>${cartTotal}.00 USD</span>
@@ -230,6 +237,7 @@ export default function CartSidebar() {
             <p style={{ textAlign: 'center', fontSize: '0.75rem', color: 'var(--text-secondary)', margin: '1rem 0 0 0' }}>Pagos seguros procesados por PayPal</p>
           </div>
         )}
+        </div>
       </div>
     </>
   );
