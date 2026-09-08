@@ -47,7 +47,8 @@ export default function CartSidebar() {
         
         // Ensure cloud downloads are forced by adding fl_attachment if it's cloudinary
         if (urlToDownload.includes('cloudinary.com') && !urlToDownload.includes('fl_attachment')) {
-            urlToDownload = urlToDownload.replace('/upload/', '/upload/fl_attachment/');
+            const fileNameWithoutExt = item.name.substring(0, item.name.lastIndexOf('.')) || item.name;
+            urlToDownload = urlToDownload.replace('/upload/', `/upload/fl_attachment:${fileNameWithoutExt}/`);
         }
 
         window.open(urlToDownload, '_blank');

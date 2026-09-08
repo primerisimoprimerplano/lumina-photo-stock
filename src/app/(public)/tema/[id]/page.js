@@ -75,7 +75,7 @@ export default async function GalleryPage({ params }) {
       return {
         id: publicId,
         public_id: publicId,
-        name: publicId.split('/').pop() + '.' + res.format,
+        format: res.format,
         path: watermarkedUrl, // Show watermarked version in modal
         thumbnail_url: thumbnailUrl, // Show without watermark in grid
         original_url: res.secure_url,
@@ -85,6 +85,12 @@ export default async function GalleryPage({ params }) {
 
     // 4. Sort images based on Supabase order
     images.sort((a, b) => a.sort_order - b.sort_order);
+
+    // 5. Asignar nombre dinámico (Lumina - Categoría - 001)
+    images.forEach((img, i) => {
+      const number = String(i + 1).padStart(3, '0');
+      img.name = `Lumina-${title.replace(/\s+/g, '-')}-${number}.${img.format}`;
+    });
 
   } catch (e) {
     console.error("Error consultando Cloudinary/Supabase:", e);
