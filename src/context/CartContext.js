@@ -47,13 +47,17 @@ export function CartProvider({ children }) {
 
   const clearCart = () => {
     setCartItems([]);
+    setAppliedPromo(null);
   };
 
   const toggleCart = () => setIsCartOpen(!isCartOpen);
   const openCart = () => setIsCartOpen(true);
   const closeCart = () => setIsCartOpen(false);
 
-  const cartTotal = cartItems.reduce((total, item) => total + item.price, 0);
+  const [appliedPromo, setAppliedPromo] = useState(null);
+
+  const cartTotalBase = cartItems.reduce((total, item) => total + item.price, 0);
+  const cartTotal = appliedPromo ? Math.max(0, cartTotalBase * (1 - (appliedPromo.discount / 100))) : cartTotalBase;
 
   return (
     <CartContext.Provider value={{
@@ -65,7 +69,10 @@ export function CartProvider({ children }) {
       toggleCart,
       openCart,
       closeCart,
-      cartTotal
+      cartTotal,
+      cartTotalBase,
+      appliedPromo,
+      setAppliedPromo
     }}>
       {children}
     </CartContext.Provider>

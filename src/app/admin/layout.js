@@ -21,6 +21,9 @@ export default function AdminLayout({ children }) {
           <Link href="/admin/blog" style={{ padding: '0.8rem 1rem', borderRadius: '6px', color: 'white', textDecoration: 'none', transition: 'background 0.2s' }} className="admin-nav-link">
             📰 Noticias
           </Link>
+          <Link href="/admin/promos" style={{ padding: '0.8rem 1rem', borderRadius: '6px', color: 'white', textDecoration: 'none', transition: 'background 0.2s' }} className="admin-nav-link">
+            🎁 Códigos Promo
+          </Link>
         </nav>
         
         <div style={{ marginTop: 'auto', paddingLeft: '1rem' }}>
