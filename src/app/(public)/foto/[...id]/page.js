@@ -59,9 +59,7 @@ export default async function PhotoLandingPage({ params }) {
         <img 
           src={cleanSmallUrl} 
           alt="Fotografía Premium" 
-          style={{ width: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }} 
-          onContextMenu={(e) => e.preventDefault()}
-          onDragStart={(e) => e.preventDefault()}
+          style={{ width: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 10px 30px rgba(0,0,0,0.5)', pointerEvents: 'none', userSelect: 'none' }} 
         />
       </div>
 
