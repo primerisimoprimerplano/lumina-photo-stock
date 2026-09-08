@@ -39,6 +39,13 @@ export default function CartSidebar() {
     setIsProcessing(true);
     try {
       await redeemPromoCode(appliedPromo.id);
+      
+      // Trigger downloads for each item
+      cartItems.forEach(item => {
+        const downloadUrl = item.url || `/api/local-image?path=${encodeURIComponent(item.path)}`;
+        window.open(downloadUrl, '_blank');
+      });
+
       clearCart();
       window.location.href = "/success?promo=true";
     } catch (err) {
