@@ -9,11 +9,10 @@ export async function generateMetadata({ params }) {
   const resolvedParams = await params;
   const publicId = resolvedParams.id.join('/'); // "lumina/naturaleza/filename"
   
-  // Re-create the watermarked URL for OG Image
-  const watermarkedUrl = cloudinary.url(publicId, {
+  const cleanSmallUrl = cloudinary.url(publicId, {
     secure: true,
     transformation: [
-      { overlay: { font_family: "Arial", font_size: 80, font_weight: "bold", text: "LUMINA PHOTO STOCK" }, color: "white", opacity: 30, angle: -45 }
+      { width: 1200, crop: "limit" } // Reducida de tamaño sin marca de agua
     ]
   });
 
@@ -25,9 +24,8 @@ export async function generateMetadata({ params }) {
       description: `Descubre esta fotografía en Lumina Photo Stock.`,
       images: [
         {
-          url: watermarkedUrl,
+          url: cleanSmallUrl,
           width: 1200,
-          height: 800,
           alt: 'Fotografía Premium'
         }
       ],
@@ -37,7 +35,7 @@ export async function generateMetadata({ params }) {
       card: 'summary_large_image',
       title: `Fotografía Premium - Lumina Photo Stock`,
       description: `Descubre esta fotografía en Lumina Photo Stock.`,
-      images: [watermarkedUrl],
+      images: [cleanSmallUrl],
     }
   };
 }
@@ -47,10 +45,10 @@ export default async function PhotoLandingPage({ params }) {
   const publicId = resolvedParams.id.join('/');
   const categoryId = resolvedParams.id[1]; // Since format is lumina/[category]/[filename]
 
-  const watermarkedUrl = cloudinary.url(publicId, {
+  const cleanSmallUrl = cloudinary.url(publicId, {
     secure: true,
     transformation: [
-      { overlay: { font_family: "Arial", font_size: 80, font_weight: "bold", text: "LUMINA PHOTO STOCK" }, color: "white", opacity: 30, angle: -45 }
+      { width: 1200, crop: "limit" }
     ]
   });
 
@@ -61,7 +59,7 @@ export default async function PhotoLandingPage({ params }) {
       <div style={{ position: 'relative', width: '100%', maxWidth: '800px', margin: '0 auto' }}>
         {/* Usamos img tag simple para que no dependa de config de Next Image en esta landing */}
         <img 
-          src={watermarkedUrl} 
+          src={cleanSmallUrl} 
           alt="Fotografía Premium" 
           style={{ width: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }} 
           onContextMenu={(e) => e.preventDefault()}
