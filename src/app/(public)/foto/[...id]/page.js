@@ -1,9 +1,7 @@
 import { v2 as cloudinary } from 'cloudinary';
 import Link from 'next/link';
 
-cloudinary.config({
-  cloudinary_url: process.env.CLOUDINARY_URL
-});
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }) {
   const resolvedParams = await params;
