@@ -42,8 +42,15 @@ export default function CartSidebar() {
       
       // Trigger downloads for each item
       cartItems.forEach(item => {
-        const downloadUrl = item.url || `/api/local-image?path=${encodeURIComponent(item.path)}`;
-        window.open(downloadUrl, '_blank');
+        // Use download_url (clean image) if available, fallback to url/path
+        let urlToDownload = item.download_url || item.url || `/api/local-image?path=${encodeURIComponent(item.path)}`;
+        
+        // Ensure cloud downloads are forced by adding fl_attachment if it's cloudinary
+        if (urlToDownload.includes('cloudinary.com') && !urlToDownload.includes('fl_attachment')) {
+            urlToDownload = urlToDownload.replace('/upload/', '/upload/fl_attachment/');
+        }
+
+        window.open(urlToDownload, '_blank');
       });
 
       clearCart();

@@ -21,7 +21,8 @@ export default function GalleryClient({ images }) {
     addToCart({
       path: selectedImage.path,
       name: selectedImage.name,
-      url: selectedImage.url,
+      url: selectedImage.url, // This is the watermarked url for cart display
+      download_url: selectedImage.original_url, // This is the clean url for download
       size: selectedSize,
       price: prices[selectedSize]
     });
